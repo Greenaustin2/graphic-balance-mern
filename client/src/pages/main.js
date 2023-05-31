@@ -7,7 +7,6 @@ import IframeConstructor from "../components/IframeConstructor.js";
 const Main = ({ apiRequest, videoData }) => {
   // const [video, videoState] = useState([]);
   const navigate = useNavigate();
-
   const handleSubmit = () => {
     navigate("/archive");
   };
@@ -33,11 +32,11 @@ const Main = ({ apiRequest, videoData }) => {
         <input type="submit" value="api request" />
       </form>
       <div>
-        {videoData ? (
-          <IframeConstructor videoData={videoData} />
-        ) : (
-          <p>Loading...</p>
-        )}
+        <IframeConstructor
+          videoData={videoData}
+          apiRequest={apiRequest}
+          text="hello"
+        />
       </div>
     </div>
   );

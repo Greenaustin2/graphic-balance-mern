@@ -10,18 +10,15 @@ import YoutubeApi from "./api";
 
 const App = () => {
   const [video, setVideo] = useState([]);
-  const [watchHistory, setWatchHistory] = useState([]);
-  const [nextVideo, setNextVideo] = useState([]);
   const submitRequest = async () => {
     const result = await YoutubeApi();
     setVideo(result);
   };
 
+  //Initial API request is calleed
   useEffect(() => {
     submitRequest();
-    console.log("called initial api request");
   }, []);
-
   return (
     <div>
       <Routes>
