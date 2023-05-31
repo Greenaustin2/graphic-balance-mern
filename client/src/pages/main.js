@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router";
-import IframeConstructor from "../components/iframeConstructor";
+import { useEffect } from "react";
+// import IframeConstructor from "../components/IframeConstructor";
+import Youtube from "react-youtube";
+import IframeConstructor from "../components/IframeConstructor.js";
 
 const Main = ({ apiRequest, videoData }) => {
   // const [video, videoState] = useState([]);
@@ -16,6 +19,7 @@ const Main = ({ apiRequest, videoData }) => {
     event.preventDefault();
     apiRequest();
   };
+  console.log("loading iframe");
   return (
     <div>
       <h1>Main</h1>
@@ -28,7 +32,13 @@ const Main = ({ apiRequest, videoData }) => {
       <form onSubmit={submitApi}>
         <input type="submit" value="api request" />
       </form>
-      <p>{JSON.stringify(videoData)}</p>
+      <div>
+        {videoData ? (
+          <IframeConstructor videoData={videoData} />
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // We use Route in order to define the different routes of our application
 import { Route, Routes } from "react-router-dom";
 
@@ -10,11 +10,17 @@ import YoutubeApi from "./api";
 
 const App = () => {
   const [video, setVideo] = useState([]);
-
+  const [watchHistory, setWatchHistory] = useState([]);
+  const [nextVideo, setNextVideo] = useState([]);
   const submitRequest = async () => {
     const result = await YoutubeApi();
     setVideo(result);
   };
+
+  useEffect(() => {
+    submitRequest();
+    console.log("called initial api request");
+  }, []);
 
   return (
     <div>
