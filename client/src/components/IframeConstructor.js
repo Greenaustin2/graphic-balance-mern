@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Youtube from "react-youtube";
+import VideosContext from "../context/videos";
 
-const IframeConstructor = ({ apiRequest, videoData }) => {
-  const submitApi = () => {
-    apiRequest();
-  };
+const IframeConstructor = () => {
+  const { video, submitRequest } = useContext(VideosContext);
+  // const submitApi = () => {
+  //   apiRequest();
+  // };
+  // let videoId;
+  // if (videoData) {
+  //   videoId = videoData["id"];
+  // }
   const opts = {
     height: "390",
     width: "640",
@@ -20,11 +26,14 @@ const IframeConstructor = ({ apiRequest, videoData }) => {
       fs: 1,
     },
   };
+  // if (video === undefined) {
+  //   return <p>still loading</p>
+  // }
   return (
     <div>
-      <div>
-        <Youtube opts={opts} videoId={videoData["id"]} onEnd={submitApi} />
-      </div>
+      {video && (
+        <Youtube opts={opts} videoId={video["id"]} onEnd={submitRequest} />
+      )}
     </div>
   );
 };

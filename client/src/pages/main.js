@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 // import IframeConstructor from "../components/IframeConstructor";
 import Youtube from "react-youtube";
 import IframeConstructor from "../components/IframeConstructor.js";
+import VideosContext from "../context/videos";
 
-const Main = ({ apiRequest, videoData }) => {
-  // const [video, videoState] = useState([]);
+const Main = () => {
+  const { submitRequest } = useContext(VideosContext);
   const navigate = useNavigate();
+
   const handleSubmit = () => {
     navigate("/archive");
   };
@@ -14,9 +16,9 @@ const Main = ({ apiRequest, videoData }) => {
     navigate("/");
   };
 
-  const submitApi = (event) => {
+  const submitApi = async (event) => {
     event.preventDefault();
-    apiRequest();
+    submitRequest();
   };
   console.log("loading iframe");
   return (
@@ -32,11 +34,7 @@ const Main = ({ apiRequest, videoData }) => {
         <input type="submit" value="api request" />
       </form>
       <div>
-        <IframeConstructor
-          videoData={videoData}
-          apiRequest={apiRequest}
-          text="hello"
-        />
+        <IframeConstructor text="hello" />
       </div>
     </div>
   );
