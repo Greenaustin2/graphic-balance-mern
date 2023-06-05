@@ -20,9 +20,9 @@ const apiRequest = async (part, value) => {
   let url;
   //If statement that differentiates between a Content Details and Snippet API requests
   if (part === "contentDetails") {
-    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[0]}`;
+    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[1]}`;
   } else if (part === "snippet") {
-    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[0]}&type=video&videoEmbeddable=true&maxResults=100&videoDefinition=high&q=${value}`;
+    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[1]}&type=video&videoEmbeddable=true&maxResults=100&videoDefinition=high&q=${value}`;
   }
   const response = await fetch(url);
   const data = await response.json();
@@ -54,6 +54,7 @@ const YoutubeApi = async () => {
       continue;
     } else {
       var randVideo = randomVideo(filteredList);
+      console.log("random video selection from api.js " + randVideo["id"]);
       return randVideo;
     }
   }

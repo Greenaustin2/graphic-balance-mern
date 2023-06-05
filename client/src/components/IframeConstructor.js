@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import Youtube from "react-youtube";
 import VideosContext from "../context/videos";
 
-const IframeConstructor = () => {
-  const { video, submitRequest } = useContext(VideosContext);
+const IframeConstructor = (props) => {
+  // const { currentVideo } = useContext(VideosContext);
+
   // const submitApi = () => {
   //   apiRequest();
   // };
@@ -29,13 +30,8 @@ const IframeConstructor = () => {
   // if (video === undefined) {
   //   return <p>still loading</p>
   // }
-  return (
-    <div>
-      {video && (
-        <Youtube opts={opts} videoId={video["id"]} onEnd={submitRequest} />
-      )}
-    </div>
-  );
+
+  return <Youtube opts={opts} videoId={props.currentVideo["id"]} />;
 };
 
 export default IframeConstructor;

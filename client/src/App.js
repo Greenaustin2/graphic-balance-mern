@@ -6,20 +6,20 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main";
 import Archive from "./pages/archive";
 import Splash from "./pages/splash";
-import YoutubeApi from "./api";
-import VideosContext from "./context/videos.js";
+import { Provider } from "./context/videos";
 
 const App = () => {
-  const { submitRequest } = useContext(VideosContext);
   //Initial API request is called
-
+  console.log("app re render");
   return (
     <div>
-      <Routes>
-        <Route exact path="/" element={<Splash />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/archive" element={<Archive />} />
-      </Routes>
+      <Provider>
+        <Routes>
+          <Route exact path="/" element={<Splash />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/archive" element={<Archive />} />
+        </Routes>
+      </Provider>
     </div>
   );
 };

@@ -30,7 +30,6 @@ const durationNameFilter = (combinedLists, queryValue) => {
 };
 
 const randomVideo = (filteredList) => {
-  console.log("entered random video function");
   if (Object.keys(filteredList).length > 1) {
     var randNumber = Math.floor(
       Math.random() * Object.keys(filteredList).length

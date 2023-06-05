@@ -1,13 +1,25 @@
 import { useNavigate } from "react-router";
-import { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 // import IframeConstructor from "../components/IframeConstructor";
 import Youtube from "react-youtube";
 import IframeConstructor from "../components/IframeConstructor.js";
 import VideosContext from "../context/videos";
+import YoutubeApi from "../api";
 
 const Main = () => {
-  const { submitRequest } = useContext(VideosContext);
+  // const { submitRequest} =
+  //   useContext(VideosContext);
   const navigate = useNavigate();
+
+  useEffect(async () => {
+    const result = await YoutubeApi();
+  }, []);
+
+  const submitApi = async (event) => {
+    event.preventDefault();
+    await submitRequest();
+    console.log("submitApi request complete");
+  };
 
   const handleSubmit = () => {
     navigate("/archive");
@@ -16,11 +28,7 @@ const Main = () => {
     navigate("/");
   };
 
-  const submitApi = async (event) => {
-    event.preventDefault();
-    submitRequest();
-  };
-  console.log("loading iframe");
+  console.log("main called");
   return (
     <div>
       <h1>Main</h1>
@@ -30,11 +38,8 @@ const Main = () => {
       <form onSubmit={splashSubmit}>
         <input type="submit" value="splash" />
       </form>
-      <form onSubmit={submitApi}>
-        <input type="submit" value="api request" />
-      </form>
       <div>
-        <IframeConstructor text="hello" />
+        <IframeConstructor />
       </div>
     </div>
   );
