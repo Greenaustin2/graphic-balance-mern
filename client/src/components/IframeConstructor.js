@@ -1,17 +1,15 @@
-import React, { useContext } from "react";
+import React, {
+  useContext,
+  useState,
+  useEffect,
+  forwardRef,
+  memo,
+} from "react";
 import Youtube from "react-youtube";
-import VideosContext from "../context/videos";
+// import VideosContext from "../context/videos";
 
-const IframeConstructor = (props) => {
-  // const { currentVideo } = useContext(VideosContext);
-
-  // const submitApi = () => {
-  //   apiRequest();
-  // };
-  // let videoId;
-  // if (videoData) {
-  //   videoId = videoData["id"];
-  // }
+const IframeConstructor = ({ currentVideo }) => {
+  console.log("iframe function entered");
   const opts = {
     height: "390",
     width: "640",
@@ -31,7 +29,7 @@ const IframeConstructor = (props) => {
   //   return <p>still loading</p>
   // }
 
-  return <Youtube opts={opts} videoId={props.currentVideo["id"]} />;
+  return <Youtube opts={opts} videoId={currentVideo["id"]} />;
 };
 
-export default IframeConstructor;
+export default memo(IframeConstructor);

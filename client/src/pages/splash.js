@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 // We import all the components we need in our app
-import TextAnimation from "../components/textAnimation";
+import TextAnimation from "../utils/textAnimation";
 
 const Splash = () => {
   const navigate = useNavigate();

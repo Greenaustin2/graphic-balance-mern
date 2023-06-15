@@ -13,13 +13,11 @@ const App = () => {
   console.log("app re render");
   return (
     <div>
-      <Provider>
-        <Routes>
-          <Route exact path="/" element={<Splash />} />
-          <Route path="/main" element={<Main />} />
-          <Route path="/archive" element={<Archive />} />
-        </Routes>
-      </Provider>
+      <Routes>
+        <Route exact path="/" element={<Splash />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/archive" element={<Archive />} />
+      </Routes>
     </div>
   );
 };

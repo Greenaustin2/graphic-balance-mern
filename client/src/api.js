@@ -1,10 +1,10 @@
-import query from "./components/queryGeneration";
+import query from "./utils/queryGeneration";
 import {
   videoIdListGeneration,
   snippetContentDetailsConcatenation,
   durationNameFilter,
   randomVideo,
-} from "./components/queryProcessing";
+} from "./utils/queryProcessing";
 
 //List of API keys
 const YOUTUBE_API_KEY = [
