@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 const archiveSchema = new Schema(
   {
-    _id: String,
-    videoTitle: String,
-    channelId: String,
-    channelTitle: String,
-    description: String,
-    publisheTime: String,
-    dateAdded: String,
-    duration: String,
-    thumbnailHigh: String,
-    userRating: Number,
+    _id: { type: String, required: true },
+    videoTitle: { type: String, required: true },
+    channelId: { type: String, required: true },
+    channelTitle: { type: String, required: true },
+    description: { type: String, required: true },
+    publisheTime: { type: String, required: true },
+    dateAdded: { type: String, required: true },
+    duration: { type: String, required: true },
+    thumbnailHigh: { type: String, required: true },
+    userRating: { type: Number, required: true },
   },
   { collection: "archive" }
 );

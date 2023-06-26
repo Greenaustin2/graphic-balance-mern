@@ -2,11 +2,15 @@ import React from "react";
 
 // import VideosContext from "../context/videos";
 
-const IframeControls = ({ previousVideo, nextVideo, submitApi }) => {
+const IframeControls = ({ previousVideo, nextVideo, submitToArchive }) => {
   return (
     <div>
       <div>
-        <button type="button" value="Submit to Archive">
+        <button
+          type="button"
+          value="Submit to Archive"
+          onClick={submitToArchive}
+        >
           Archive
         </button>
       </div>

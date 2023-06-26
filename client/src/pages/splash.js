@@ -1,15 +1,18 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-
-// We import all the components we need in our app
+import usePlayer from "../hooks/use-playermain";
 import TextAnimation from "../utils/textAnimation";
 
 const Splash = () => {
+  const { initialRequest } = usePlayer();
   const navigate = useNavigate();
   const handleSubmit = () => {
     navigate("/main");
   };
+
+  useEffect(() => {
+    initialRequest();
+  }, []);
   return (
     <div>
       <TextAnimation />

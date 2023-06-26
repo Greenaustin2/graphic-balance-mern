@@ -1,72 +1,15 @@
 import { useNavigate } from "react-router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 // import IframeConstructor from "../components/IframeConstructor";
 import IframeConstructor from "../components/IframeConstructor.js";
-import YoutubeApi from "../api";
 import IframeControls from "../components/iframeControls";
+import usePlayer from "../hooks/use-playermain.js";
+import axios from "axios";
 
 const Main = () => {
-  //Current video state controls what is shown on screen to user
-  const [currentVideo, setCurrentVideo] = useState();
-  //Next video ref cues up video data to be passed into currentVideo State
-  const nextVideoRef = useRef();
-  //Watch history tracks and stores previously watched videos
-  const watchHistory = useRef([]);
-  //Router navigation
+  const { currentVideo, previousVideo, nextVideo, initialRequest } =
+    usePlayer();
   const navigate = useNavigate();
-
-  //Runs two API requests, one for initial video and another to cue video
-  useEffect(() => {
-    initialRequest();
-  }, []);
-
-  //currentVideo and nextVideoRef are asiggned apiRequest video results
-  const initialRequest = async () => {
-    const result = await YoutubeApi();
-    setCurrentVideo(result);
-    updateWatchHistory(result);
-    const result2 = await YoutubeApi();
-    nextVideoRef.current = result2;
-  };
-
-  //Appends current video to the watch history array
-  const updateWatchHistory = (videoData) => {
-    watchHistory.current.push(videoData);
-    console.log("watch history: " + watchHistory.current);
-  };
-
-  //Skip to next video
-  const nextVideo = (event) => {
-    console.log("watch history length" + watchHistory.current.length);
-    if (
-      currentVideo !== watchHistory.current[watchHistory.current.length - 1]
-    ) {
-      var index = watchHistory.current.findIndex((el) => {
-        return el === currentVideo;
-      });
-      setCurrentVideo(watchHistory.current[index + 1]);
-    } else {
-      submitApi(event);
-    }
-  };
-  //Skip to previous video
-  const previousVideo = () => {
-    if (currentVideo !== watchHistory.current[0]) {
-      var index = watchHistory.current.findIndex((el) => {
-        return el === currentVideo;
-      });
-      setCurrentVideo(watchHistory.current[index - 1]);
-    }
-  };
-
-  //State is updated via pre-loaded video from nextVideoRef, and nextVideoRef is updated
-  const submitApi = async (event) => {
-    event.preventDefault();
-    setCurrentVideo(nextVideoRef.current);
-    updateWatchHistory(nextVideoRef.current);
-    const result = await YoutubeApi();
-    nextVideoRef.current = result;
-  };
 
   //Navigation
   const handleSubmit = () => {
@@ -75,6 +18,33 @@ const Main = () => {
   const splashSubmit = () => {
     navigate("/");
   };
+
+  const submitToArchive = () => {
+    const videoFile = {
+      _id: currentVideo["id"],
+      videoTitle: currentVideo["snippet"]["title"],
+      channelId: currentVideo["snippet"]["channelId"],
+      channelTitle: currentVideo["snippet"]["channelTitle"],
+      description: currentVideo["snippet"]["description"],
+      publisheTime: currentVideo["snippet"]["publishTime"],
+      dateAdded: Date(),
+      duration: currentVideo["contentDetails"]["duration"],
+      thumbnailHigh: currentVideo["snippet"]["thumbnails"]["high"]["url"],
+      userRating: 0,
+    };
+    axios
+      .post("http://localhost:5000/archive/add", videoFile)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  };
+
+  useEffect(() => {
+    initialRequest();
+  }, []);
 
   console.log("main called");
   return (
@@ -91,9 +61,9 @@ const Main = () => {
         {currentVideo && <IframeConstructor currentVideo={currentVideo} />}
       </div>
       <IframeControls
-        submitApi={submitApi}
         previousVideo={previousVideo}
         nextVideo={nextVideo}
+        submitToArchive={submitToArchive}
       />
     </div>
   );

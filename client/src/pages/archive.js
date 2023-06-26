@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import IframeConstructor from "../components/IframeConstructor.js";
+import "../css/archive.css";
 
 // const archiveStateTemplate = {
 //   _id: "",
@@ -28,6 +30,7 @@ const Archive = () => {
   // thumbnailHigh: "",
   // userRating: 0,
   const navigate = useNavigate();
+  const currentVideo = { id: "3EOTl-DLkuA" };
 
   const mainSubmit = () => {
     navigate("/main");
@@ -63,8 +66,8 @@ const Archive = () => {
       Object.keys(videoData["videoData"]).map((key, value) => {
         return (
           <tr>
-            <td>{videoData["videoData"][key]["_id"]}</td>
             <td>{videoData["videoData"][key]["videoTitle"]}</td>
+            <td>{videoData["videoData"][key]["_id"]}</td>
           </tr>
         );
         //
@@ -77,23 +80,30 @@ const Archive = () => {
   // }, [videoData]);
 
   return (
-    <div>
-      <h1>Archive</h1>
-      <table>
-        <tbody>
-          <tr>
-            <th>id</th>
-            <th>video title</th>
-          </tr>
-          {videoData && <VideoDataTable videoData={videoData} />}
-        </tbody>
-      </table>
-      <form onSubmit={mainSubmit}>
-        <input type="submit" value="main" />
-      </form>
-      <form onSubmit={splashSubmit}>
-        <input type="submit" value="splash" />
-      </form>
+    <div className="container">
+      <div classname="header">
+        <h1>Archive</h1>
+        <form onSubmit={mainSubmit}>
+          <input type="submit" value="main" />
+        </form>
+        <form onSubmit={splashSubmit}>
+          <input type="submit" value="splash" />
+        </form>
+      </div>
+      <div className="left">
+        <table>
+          <tbody>
+            <tr>
+              <th>video title</th>
+              <th>id</th>
+            </tr>
+            {videoData && <VideoDataTable videoData={videoData} />}
+          </tbody>
+        </table>
+      </div>
+      <div className="right">
+        <IframeConstructor currentVideo={currentVideo} />
+      </div>
     </div>
   );
 };
