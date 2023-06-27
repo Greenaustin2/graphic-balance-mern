@@ -17,9 +17,9 @@ const opts = {
   },
 };
 
-const IframeConstructor = ({ currentVideo }) => {
+const IframeConstructor = ({ currentVideo, onEnd }) => {
   console.log("iframe function entered");
-  return <Youtube opts={opts} videoId={currentVideo["id"]} />;
+  return <Youtube opts={opts} videoId={currentVideo} onEnd={onEnd} />;
 };
 
 export default memo(IframeConstructor);

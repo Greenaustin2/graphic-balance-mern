@@ -6,13 +6,15 @@ const IframeControls = ({ previousVideo, nextVideo, submitToArchive }) => {
   return (
     <div>
       <div>
-        <button
-          type="button"
-          value="Submit to Archive"
-          onClick={submitToArchive}
-        >
-          Archive
-        </button>
+        {submitToArchive && (
+          <button
+            type="button"
+            value="Submit to Archive"
+            onClick={submitToArchive}
+          >
+            Archive
+          </button>
+        )}
       </div>
       <div>
         <button type="button" onClick={nextVideo} value="Next">

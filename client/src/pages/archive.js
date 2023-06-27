@@ -1,83 +1,90 @@
 import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import IframeConstructor from "../components/IframeConstructor.js";
+import IframeConstructor from "../components/IframeConstructor";
+import IframeControls from "../components/IframeControls";
 import "../css/archive.css";
 
-// const archiveStateTemplate = {
-//   _id: "",
-//     videoTitle: "",
-//     channelId: "",
-//     channelTitle: "",
-//     description: "",
-//     publisheTime: "",
-//     dateAdded: "",
-//     duration: "",
-//     thumbnailHigh: "",
-//     userRating: 0,
-// }
-
 const Archive = () => {
-  const [videoData, setVideoData] = useState();
-  // _id: "",
-  // videoTitle: "",
-  // channelId: "",
-  // channelTitle: "",
-  // description: "",
-  // publisheTime: "",
-  // dateAdded: "",
-  // duration: "",
-  // thumbnailHigh: "",
-  // userRating: 0,
+  const [videoData, setVideoData] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState("");
   const navigate = useNavigate();
-  const currentVideo = { id: "3EOTl-DLkuA" };
+  //ref to prevent initial render of currentVideo useEffect
+  const didMount = useRef(false);
 
+  //Navigation
   const mainSubmit = () => {
     navigate("/main");
   };
-
   const splashSubmit = () => {
     navigate("/");
   };
 
+  const handleTableClick = (video) => {
+    setCurrentVideo(video);
+  };
+
+  const nextVideo = () => {
+    const dataLength = videoData.length;
+    const index = videoData.findIndex((el) => {
+      return el["_id"] === currentVideo;
+    });
+    if (currentVideo !== videoData[dataLength - 1]["_id"]) {
+      setCurrentVideo(videoData[index + 1]["_id"]);
+    }
+  };
+
+  const previousVideo = () => {
+    const index = videoData.findIndex((el) => {
+      return el["_id"] === currentVideo;
+    });
+    if (currentVideo !== videoData[0]["_id"]) {
+      setCurrentVideo(videoData[index - 1]["_id"]);
+    }
+  };
+  // fetch video archive data and set to videoData state
   const loadVideoArchive = () => {
     axios
       .get("http://localhost:5000/archive")
       .then((response) => {
-        // response.data.map((r) => {
-        //   setVideoData(...videoData, { _id: r._id, videoTitle: r.videoTitle });
-        setVideoData(response.data);
         console.log(response.data);
+        setVideoData(response.data);
       })
       .catch((error) => {
         alert(error);
       });
   };
 
+  //update currentVideo State only when videoData is defined, skip initial render
+  useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+    setCurrentVideo(videoData[0]["_id"]);
+    console.log(typeof videoData);
+  }, [videoData]);
+
+  //Load video archive on initial render
   useEffect(() => {
     loadVideoArchive();
   }, []);
 
   const VideoDataTable = (videoData) => {
-    console.log("video data table entered");
-
-    return (
-      // Object.entries(tifs).map(([key,value],i) => <option key={i} value={key}>{value}</option>)
-      Object.keys(videoData["videoData"]).map((key, value) => {
-        return (
-          <tr>
-            <td>{videoData["videoData"][key]["videoTitle"]}</td>
-            <td>{videoData["videoData"][key]["_id"]}</td>
-          </tr>
-        );
-        //
-      })
-    );
+    const videoArray = videoData["videoData"];
+    return Object.keys(videoArray).map((key, value) => {
+      return (
+        <tr
+          key={videoArray[key]["_id"]}
+          onClick={() => handleTableClick(videoArray[key]["_id"])}
+        >
+          <td>{videoArray[key]["videoTitle"]}</td>
+          <td>{videoArray[key]["_id"]}</td>
+        </tr>
+      );
+      //
+    });
   };
-
-  // useEffect(() => {
-  //   videoData.map;
-  // }, [videoData]);
 
   return (
     <div className="container">
@@ -102,7 +109,14 @@ const Archive = () => {
         </table>
       </div>
       <div className="right">
-        <IframeConstructor currentVideo={currentVideo} />
+        {currentVideo && (
+          <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
+        )}
+        <IframeControls
+          previousVideo={previousVideo}
+          nextVideo={nextVideo}
+          submitToArchive={null}
+        />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import React, { useEffect } from "react";
 // import IframeConstructor from "../components/IframeConstructor";
 import IframeConstructor from "../components/IframeConstructor.js";
-import IframeControls from "../components/iframeControls";
+import IframeControls from "../components/IframeControls.js";
 import usePlayer from "../hooks/use-playermain.js";
 import axios from "axios";
 
@@ -58,7 +58,12 @@ const Main = () => {
       </form>
 
       <div>
-        {currentVideo && <IframeConstructor currentVideo={currentVideo} />}
+        {currentVideo && (
+          <IframeConstructor
+            currentVideo={currentVideo["id"]}
+            onEnd={nextVideo}
+          />
+        )}
       </div>
       <IframeControls
         previousVideo={previousVideo}
