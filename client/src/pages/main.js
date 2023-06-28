@@ -33,7 +33,7 @@ const Main = () => {
       userRating: 0,
     };
     axios
-      .post("http://localhost:5000/archive/add", videoFile)
+      .post("http://localhost:5000/archive/add/", videoFile)
       .then(function (response) {
         console.log(response);
       })

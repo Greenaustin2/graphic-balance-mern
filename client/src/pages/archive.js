@@ -20,10 +20,6 @@ const Archive = () => {
     navigate("/");
   };
 
-  const handleTableClick = (video) => {
-    setCurrentVideo(video);
-  };
-
   const nextVideo = () => {
     const dataLength = videoData.length;
     const index = videoData.findIndex((el) => {
@@ -44,10 +40,11 @@ const Archive = () => {
   };
   // fetch video archive data and set to videoData state
   const loadVideoArchive = () => {
+    console.log("load video archive");
     axios
       .get("http://localhost:5000/archive")
       .then((response) => {
-        console.log(response.data);
+        console.log("load video archive response");
         setVideoData(response.data);
       })
       .catch((error) => {
@@ -70,19 +67,61 @@ const Archive = () => {
     loadVideoArchive();
   }, []);
 
+  //reformat duration string in table
+  const formatTime = (duration) => {
+    const formattedTime = duration
+      .replace("PT", "")
+      .replace("H", ":")
+      .replace("M", ":")
+      .replace("S", "");
+    return formattedTime;
+  };
+
+  //reformat publish date in table
+  const formatDate = (date) => {
+    const formattedDate = date.split("T");
+    return formattedDate[0];
+  };
+
+  //highlights current playing video
+  const conditionalStyles = (id) => {
+    if (id === currentVideo) {
+      return "highlight";
+    }
+  };
+
+  const handleTableClick = (video) => {
+    setCurrentVideo(video);
+  };
+
+  const handleDelete = () => {
+    axios
+      .delete("http://localhost:5000/archive/" + currentVideo)
+      .then(() => {
+        console.log("video deleted");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   const VideoDataTable = (videoData) => {
     const videoArray = videoData["videoData"];
+    console.log("table re render");
     return Object.keys(videoArray).map((key, value) => {
+      const id = videoArray[key]["_id"];
       return (
         <tr
-          key={videoArray[key]["_id"]}
-          onClick={() => handleTableClick(videoArray[key]["_id"])}
+          key={id}
+          onClick={() => handleTableClick(id)}
+          className={() => conditionalStyles(id)}
         >
           <td>{videoArray[key]["videoTitle"]}</td>
-          <td>{videoArray[key]["_id"]}</td>
+          <td>{videoArray[key]["channelTitle"]}</td>
+          <td>{formatTime(videoArray[key]["duration"])}</td>
+          <td>{formatDate(videoArray[key]["publisheTime"])}</td>
         </tr>
       );
-      //
     });
   };
 
@@ -101,8 +140,10 @@ const Archive = () => {
         <table>
           <tbody>
             <tr>
-              <th>video title</th>
-              <th>id</th>
+              <th>title</th>
+              <th>channel</th>
+              <th>duration</th>
+              <th>date</th>
             </tr>
             {videoData && <VideoDataTable videoData={videoData} />}
           </tbody>
@@ -115,6 +156,7 @@ const Archive = () => {
         <IframeControls
           previousVideo={previousVideo}
           nextVideo={nextVideo}
+          handleDelete={handleDelete}
           submitToArchive={null}
         />
       </div>

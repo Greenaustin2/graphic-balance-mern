@@ -2,7 +2,12 @@ import React from "react";
 
 // import VideosContext from "../context/videos";
 
-const IframeControls = ({ previousVideo, nextVideo, submitToArchive }) => {
+const IframeControls = ({
+  previousVideo,
+  nextVideo,
+  submitToArchive,
+  handleDelete,
+}) => {
   return (
     <div>
       <div>
@@ -25,6 +30,13 @@ const IframeControls = ({ previousVideo, nextVideo, submitToArchive }) => {
         <button type="button" onClick={previousVideo} value="Previous">
           Previous
         </button>
+      </div>
+      <div>
+        {handleDelete && (
+          <button type="button" onClick={handleDelete} value="Delete">
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

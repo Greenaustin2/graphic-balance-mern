@@ -18,3 +18,18 @@
   grid-column: 2;
   grid-row: 2;
 }
+
+tr:hover {
+  background-color: rgb(240, 240, 240);
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+tr:active {
+  background-color: rgb(255, 228, 75);
+  transition: 0.15s ease;
+}
+
+.highlight {
+  background-color: blue;
+}

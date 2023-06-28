@@ -8,7 +8,7 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/").post((req, res) => {
+router.route("/add").post((req, res) => {
   const _id = req.body._id;
   const videoTitle = req.body.videoTitle;
   const channelId = req.body.channelId;
@@ -19,17 +19,6 @@ router.route("/").post((req, res) => {
   const duration = req.body.duration;
   const thumbnailHigh = req.body.thumbnailHigh;
   const userRating = req.body.userRating;
-  // const newArchive = new Archive();
-  // newArchive._id = _id;
-  // newArchive.videoTitle = videoTitle;
-  // newArchive.channelId = channelId;
-  // newArchive.channelTitle = channelTitle;
-  // newArchive.description = description;
-  // newArchive.publisheTime = publisheTime;
-  // newArchive.dateAdded = dateAdded;
-  // newArchive.duration = duration;
-  // newArchive.thumbnailHigh = thumbnailHigh;
-  // newArchive.userRating = userRating;
 
   const newArchive = new Archive({
     _id,
@@ -42,22 +31,18 @@ router.route("/").post((req, res) => {
     duration,
     thumbnailHigh,
     userRating,
-    // _id: req.body._id,
-    // videoTitle: req.body.videoTitle,
-    // channelId: req.body.channelId,
-    // channelTitle: req.body.channelTitle,
-    // description: req.body.description,
-    // publisheTime: req.body.publisheTime,
-    // dateAdded: req.body.dateAdded,
-    // duration: req.body.duration,
-    // thumbnailHigh: req.body.thumbnailHigh,
-    // userRating: req.body.userRating,
   });
 
   newArchive
     .save()
     .then(() => res.json("Archive Added!"))
     .catch((err) => res.status(400).json("Errorororororororo: " + err));
+});
+
+router.route("/:id").delete((req, res) => {
+  Archive.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Exercise deleted."))
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;
