@@ -4,10 +4,21 @@ import axios from "axios";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls";
 import "../css/archive.css";
+import { formatTime, formatDate } from "../utils/timeConversion";
+import usePlayerArchive from "../hooks/use-playerArchive";
+import SortingButtons from "../components/SortingButtons";
 
 const Archive = () => {
-  const [videoData, setVideoData] = useState([]);
-  const [currentVideo, setCurrentVideo] = useState("");
+  const {
+    videoData,
+    setVideoData,
+    currentVideo,
+    setCurrentVideo,
+    nextVideo,
+    previousVideo,
+    handleTableClick,
+  } = usePlayerArchive();
+
   const navigate = useNavigate();
   //ref to prevent initial render of currentVideo useEffect
   const didMount = useRef(false);
@@ -18,38 +29,6 @@ const Archive = () => {
   };
   const splashSubmit = () => {
     navigate("/");
-  };
-
-  const nextVideo = () => {
-    const dataLength = videoData.length;
-    const index = videoData.findIndex((el) => {
-      return el["_id"] === currentVideo;
-    });
-    if (currentVideo !== videoData[dataLength - 1]["_id"]) {
-      setCurrentVideo(videoData[index + 1]["_id"]);
-    }
-  };
-
-  const previousVideo = () => {
-    const index = videoData.findIndex((el) => {
-      return el["_id"] === currentVideo;
-    });
-    if (currentVideo !== videoData[0]["_id"]) {
-      setCurrentVideo(videoData[index - 1]["_id"]);
-    }
-  };
-  // fetch video archive data and set to videoData state
-  const loadVideoArchive = () => {
-    console.log("load video archive");
-    axios
-      .get("http://localhost:5000/archive")
-      .then((response) => {
-        console.log("load video archive response");
-        setVideoData(response.data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
   };
 
   //update currentVideo State only when videoData is defined, skip initial render
@@ -64,35 +43,31 @@ const Archive = () => {
 
   //Load video archive on initial render
   useEffect(() => {
-    loadVideoArchive();
+    loadVideoArchive("videoTitle", 1);
   }, []);
 
-  //reformat duration string in table
-  const formatTime = (duration) => {
-    const formattedTime = duration
-      .replace("PT", "")
-      .replace("H", ":")
-      .replace("M", ":")
-      .replace("S", "");
-    return formattedTime;
-  };
-
-  //reformat publish date in table
-  const formatDate = (date) => {
-    const formattedDate = date.split("T");
-    return formattedDate[0];
-  };
-
-  //highlights current playing video
-  const conditionalStyles = (id) => {
-    if (id === currentVideo) {
-      return "highlight";
-    }
-  };
-
-  const handleTableClick = (video) => {
-    setCurrentVideo(video);
-  };
+  // fetch video archive data and set to videoData state
+  //sortKey indicated varibale with which rows are sorted
+  //sort direction accepts either 1 or -1, indicating ascending and descending values
+  function loadVideoArchive(sortKey, sortDirection) {
+    // var sortCriteria = {};
+    // sortCriteria[sortKey] = sortDirection;
+    console.log("load video archive");
+    axios
+      .get("http://localhost:5000/archive", {
+        params: {
+          sortKey: sortKey,
+          sortDirection: sortDirection,
+        },
+      })
+      .then((response) => {
+        console.log("load video archive response");
+        setVideoData(response.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }
 
   const handleDelete = () => {
     axios
@@ -114,7 +89,7 @@ const Archive = () => {
         <tr
           key={id}
           onClick={() => handleTableClick(id)}
-          className={() => conditionalStyles(id)}
+          className={currentVideo === id ? "active" : null}
         >
           <td>{videoArray[key]["videoTitle"]}</td>
           <td>{videoArray[key]["channelTitle"]}</td>
@@ -137,15 +112,48 @@ const Archive = () => {
         </form>
       </div>
       <div className="left">
+        <button onClick={() => loadVideoArchive()}>default sort</button>
         <table>
           <tbody>
             <tr>
-              <th>title</th>
-              <th>channel</th>
-              <th>duration</th>
-              <th>date</th>
+              <th>
+                title
+                <SortingButtons
+                  loadVideoArchive={loadVideoArchive}
+                  sortParameter={"videoTitle"}
+                />
+              </th>
+              <th>
+                channel
+                <SortingButtons
+                  loadVideoArchive={loadVideoArchive}
+                  sortParameter={"channelTitle"}
+                />
+              </th>
+              <th>
+                duration
+                <SortingButtons
+                  loadVideoArchive={loadVideoArchive}
+                  sortParameter={"duration"}
+                />
+              </th>
+
+              <th>
+                date
+                <SortingButtons
+                  loadVideoArchive={loadVideoArchive}
+                  sortParameter={"publisheTime"}
+                />
+              </th>
             </tr>
-            {videoData && <VideoDataTable videoData={videoData} />}
+            {videoData && (
+              <VideoDataTable
+                videoData={videoData}
+                handleTableClick={handleTableClick}
+                formatTime={formatTime}
+                formatDate={formatDate}
+              />
+            )}
           </tbody>
         </table>
       </div>

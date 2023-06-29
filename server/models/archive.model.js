@@ -7,7 +7,7 @@ const archiveSchema = new Schema(
     videoTitle: { type: String, required: true },
     channelId: { type: String, required: true },
     channelTitle: { type: String, required: true },
-    description: { type: String, required: true },
+    description: { type: String, required: false },
     publisheTime: { type: String, required: true },
     dateAdded: { type: String, required: true },
     duration: { type: String, required: true },

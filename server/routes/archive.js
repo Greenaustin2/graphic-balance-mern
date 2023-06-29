@@ -3,7 +3,10 @@ let Archive = require("../models/archive.model");
 
 router.route("/").get((req, res) => {
   console.log("express router get request");
+  var sortCriteria = {};
+  sortCriteria[req.query.sortKey] = req.query.sortDirection;
   Archive.find()
+    .sort(sortCriteria)
     .then((archive) => res.json(archive))
     .catch((err) => res.status(400).json("Error: " + err));
 });
