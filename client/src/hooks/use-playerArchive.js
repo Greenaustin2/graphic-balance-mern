@@ -23,10 +23,6 @@ function usePlayerArchive() {
     }
   };
 
-  const handleTableClick = (video) => {
-    setCurrentVideo(video);
-  };
-
   return {
     videoData,
     setVideoData,
@@ -34,7 +30,6 @@ function usePlayerArchive() {
     setCurrentVideo,
     nextVideo,
     previousVideo,
-    handleTableClick,
   };
 }
 

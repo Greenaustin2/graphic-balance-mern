@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import axios from "axios";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls";
@@ -7,6 +7,8 @@ import "../css/archive.css";
 import { formatTime, formatDate } from "../utils/timeConversion";
 import usePlayerArchive from "../hooks/use-playerArchive";
 import SortingButtons from "../components/SortingButtons";
+import VidInfo from "../components/VidInfo";
+// import VideoDataTable from "../components/VideoDataTable";
 
 const Archive = () => {
   const {
@@ -16,20 +18,11 @@ const Archive = () => {
     setCurrentVideo,
     nextVideo,
     previousVideo,
-    handleTableClick,
   } = usePlayerArchive();
 
   const navigate = useNavigate();
   //ref to prevent initial render of currentVideo useEffect
   const didMount = useRef(false);
-
-  //Navigation
-  const mainSubmit = () => {
-    navigate("/main");
-  };
-  const splashSubmit = () => {
-    navigate("/");
-  };
 
   //update currentVideo State only when videoData is defined, skip initial render
   useEffect(() => {
@@ -38,13 +31,16 @@ const Archive = () => {
       return;
     }
     setCurrentVideo(videoData[0]["_id"]);
-    console.log(typeof videoData);
   }, [videoData]);
 
   //Load video archive on initial render
   useEffect(() => {
     loadVideoArchive("videoTitle", 1);
   }, []);
+
+  const handleTableClick = (id) => {
+    setCurrentVideo(id);
+  };
 
   // fetch video archive data and set to videoData state
   //sortKey indicated varibale with which rows are sorted
@@ -104,10 +100,10 @@ const Archive = () => {
     <div className="container">
       <div classname="header">
         <h1>Archive</h1>
-        <form onSubmit={mainSubmit}>
+        <form onSubmit={() => navigate("/main")}>
           <input type="submit" value="main" />
         </form>
-        <form onSubmit={splashSubmit}>
+        <form onSubmit={() => navigate("/splash")}>
           <input type="submit" value="splash" />
         </form>
       </div>
@@ -149,9 +145,9 @@ const Archive = () => {
             {videoData && (
               <VideoDataTable
                 videoData={videoData}
-                handleTableClick={handleTableClick}
-                formatTime={formatTime}
-                formatDate={formatDate}
+                // videoData={videoData}
+                // handleTableClick={handleTableClick}
+                // currentVideo={currentVideo}
               />
             )}
           </tbody>
@@ -167,6 +163,9 @@ const Archive = () => {
           handleDelete={handleDelete}
           submitToArchive={null}
         />
+        {videoData && (
+          <VidInfo currentVideo={currentVideo} videoData={videoData} />
+        )}
       </div>
     </div>
   );

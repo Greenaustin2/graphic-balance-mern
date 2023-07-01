@@ -1,15 +1,17 @@
-const VideoDataTable = ({
-  videoData,
-  handleTableClick,
-  formatTime,
-  formatDate,
-}) => {
+import { formatTime, formatDate } from "../utils/timeConversion";
+import React from "react";
+
+const VideoDataTable = ({ videoData, currentVideo, handleTableClick }) => {
   const videoArray = videoData["videoData"];
   console.log("table re render");
   return Object.keys(videoArray).map((key, value) => {
     const id = videoArray[key]["_id"];
     return (
-      <tr key={id} onClick={() => handleTableClick(id)}>
+      <tr
+        key={id}
+        onClick={(id) => handleTableClick(id)}
+        className={currentVideo === id ? "active" : null}
+      >
         <td>{videoArray[key]["videoTitle"]}</td>
         <td>{videoArray[key]["channelTitle"]}</td>
         <td>{formatTime(videoArray[key]["duration"])}</td>
