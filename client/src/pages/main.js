@@ -3,21 +3,13 @@ import React, { useEffect } from "react";
 // import IframeConstructor from "../components/IframeConstructor";
 import IframeConstructor from "../components/IframeConstructor.js";
 import IframeControls from "../components/IframeControls.js";
-import usePlayer from "../hooks/use-playermain.js";
+import usePlayer from "../hooks/usePlayerMain";
 import axios from "axios";
 
 const Main = () => {
   const { currentVideo, previousVideo, nextVideo, initialRequest } =
     usePlayer();
   const navigate = useNavigate();
-
-  //Navigation
-  const handleSubmit = () => {
-    navigate("/archive");
-  };
-  const splashSubmit = () => {
-    navigate("/");
-  };
 
   const submitToArchive = () => {
     const videoFile = {
@@ -50,10 +42,10 @@ const Main = () => {
   return (
     <div>
       <h1>Main</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={() => navigate("/archive")}>
         <input type="submit" value="archive" />
       </form>
-      <form onSubmit={splashSubmit}>
+      <form onSubmit={() => navigate("/")}>
         <input type="submit" value="splash" />
       </form>
 

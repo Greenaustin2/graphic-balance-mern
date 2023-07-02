@@ -1,26 +1,32 @@
+import React from "react";
+import { ExternalLink } from "react-external-link";
+import { formatDate } from "../utils/timeConversion";
+
 const VidInfo = ({ currentVideo, videoData }) => {
   let selectedVideo;
   for (const video in videoData) {
-    console.log(videoData[video]["_id"]);
     if (currentVideo === videoData[video]["_id"]) {
       selectedVideo = videoData[video];
-      console.log("selected video " + selectedVideo);
     }
   }
 
   return (
     <div>
-      <p>{selectedVideo["videoTitle"]}</p>
-      <p>
-        <a
-          href={"http://www.youtube.com/channel/" + selectedVideo["channelId"]}
-          target="_blank"
-        >
-          {selectedVideo["channelTitle"]}
-        </a>
-      </p>
+      <ExternalLink
+        href={"https://www.youtube.com/watch?v=" + selectedVideo["id"]}
+      >
+        <span>{selectedVideo["videoTitle"]}</span>
+      </ExternalLink>
+
+      <br />
+      <ExternalLink
+        href={"http://www.youtube.com/channel/" + selectedVideo["channelId"]}
+      >
+        <span>{selectedVideo["channelTitle"]}</span>
+      </ExternalLink>
+
       <p>{selectedVideo["description"]}</p>
-      <p>{selectedVideo["publisheTime"]}</p>
+      <p>{formatDate(selectedVideo["publisheTime"])}</p>
     </div>
   );
 };

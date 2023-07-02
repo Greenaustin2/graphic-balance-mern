@@ -7,7 +7,7 @@ const opts = {
   width: "640",
   playerVars: {
     // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
+    autoplay: 0,
     playsInline: 1,
     rel: 0,
     modestbranding: 1,

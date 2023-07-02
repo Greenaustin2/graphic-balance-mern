@@ -1,80 +1,26 @@
 import { useNavigate } from "react-router";
-import { useEffect, useRef } from "react";
-import axios from "axios";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls";
 import "../css/archive.css";
 import { formatTime, formatDate } from "../utils/timeConversion";
-import usePlayerArchive from "../hooks/use-playerArchive";
+import usePlayerArchive from "../hooks/usePlayerArchive";
 import SortingButtons from "../components/SortingButtons";
 import VidInfo from "../components/VidInfo";
-// import VideoDataTable from "../components/VideoDataTable";
+import { YOUTUBE_API_KEY, apiRequest } from "../api";
+import DatabaseSubmit from "../components/DatabaseSubmit";
 
 const Archive = () => {
   const {
     videoData,
-    setVideoData,
     currentVideo,
-    setCurrentVideo,
     nextVideo,
     previousVideo,
+    loadVideoArchive,
+    handleDelete,
+    handleTableClick,
   } = usePlayerArchive();
 
   const navigate = useNavigate();
-  //ref to prevent initial render of currentVideo useEffect
-  const didMount = useRef(false);
-
-  //update currentVideo State only when videoData is defined, skip initial render
-  useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-      return;
-    }
-    setCurrentVideo(videoData[0]["_id"]);
-  }, [videoData]);
-
-  //Load video archive on initial render
-  useEffect(() => {
-    loadVideoArchive("videoTitle", 1);
-  }, []);
-
-  const handleTableClick = (id) => {
-    setCurrentVideo(id);
-  };
-
-  // fetch video archive data and set to videoData state
-  //sortKey indicated varibale with which rows are sorted
-  //sort direction accepts either 1 or -1, indicating ascending and descending values
-  function loadVideoArchive(sortKey, sortDirection) {
-    // var sortCriteria = {};
-    // sortCriteria[sortKey] = sortDirection;
-    console.log("load video archive");
-    axios
-      .get("http://localhost:5000/archive", {
-        params: {
-          sortKey: sortKey,
-          sortDirection: sortDirection,
-        },
-      })
-      .then((response) => {
-        console.log("load video archive response");
-        setVideoData(response.data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  }
-
-  const handleDelete = () => {
-    axios
-      .delete("http://localhost:5000/archive/" + currentVideo)
-      .then(() => {
-        console.log("video deleted");
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
 
   const VideoDataTable = (videoData) => {
     const videoArray = videoData["videoData"];
@@ -103,7 +49,7 @@ const Archive = () => {
         <form onSubmit={() => navigate("/main")}>
           <input type="submit" value="main" />
         </form>
-        <form onSubmit={() => navigate("/splash")}>
+        <form onSubmit={() => navigate("/")}>
           <input type="submit" value="splash" />
         </form>
       </div>
@@ -142,14 +88,8 @@ const Archive = () => {
                 />
               </th>
             </tr>
-            {videoData && (
-              <VideoDataTable
-                videoData={videoData}
-                // videoData={videoData}
-                // handleTableClick={handleTableClick}
-                // currentVideo={currentVideo}
-              />
-            )}
+
+            {videoData && <VideoDataTable videoData={videoData} />}
           </tbody>
         </table>
       </div>
@@ -163,9 +103,10 @@ const Archive = () => {
           handleDelete={handleDelete}
           submitToArchive={null}
         />
-        {videoData && (
+        {videoData && currentVideo && (
           <VidInfo currentVideo={currentVideo} videoData={videoData} />
         )}
+        <DatabaseSubmit />
       </div>
     </div>
   );

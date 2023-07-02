@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-import usePlayer from "../hooks/use-playermain";
+import usePlayer from "../hooks/usePlayerMain";
 import TextAnimation from "../utils/textAnimation";
 
 const Splash = () => {

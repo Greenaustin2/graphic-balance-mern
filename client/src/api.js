@@ -17,15 +17,20 @@ const YOUTUBE_API_KEY = [
 ];
 
 const apiRequest = async (part, value) => {
+  console.log("api request called");
+  console.log(value, part);
   let url;
   //If statement that differentiates between a Content Details and Snippet API requests
   if (part === "contentDetails") {
-    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[4]}`;
+    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[5]}`;
   } else if (part === "snippet") {
-    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[4]}&type=video&videoEmbeddable=true&maxResults=100&videoDefinition=high&q=${value}`;
+    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[5]}&type=video&videoEmbeddable=true&maxResults=100&videoDefinition=high&q=${value}`;
+  } else if (part === "singleSnippet") {
+    url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${YOUTUBE_API_KEY[5]}&id=${value}`;
   }
   const response = await fetch(url);
   const data = await response.json();
+  console.log(data);
   return data;
 };
 
@@ -60,4 +65,5 @@ const YoutubeApi = async () => {
   }
 };
 
+export { YOUTUBE_API_KEY, apiRequest };
 export default YoutubeApi;
