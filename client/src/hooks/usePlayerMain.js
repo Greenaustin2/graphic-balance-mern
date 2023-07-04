@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import YoutubeApi from "../api";
+import axios from "axios";
 
 function usePlayer() {
   //Current video state controls what is shown on screen to user
@@ -59,11 +60,39 @@ function usePlayer() {
     nextVideoRef.current = result;
   };
 
+  const submitToArchive = () => {
+    const videoFile = {
+      _id: currentVideo["id"],
+      videoTitle: currentVideo["snippet"]["title"],
+      channelId: currentVideo["snippet"]["channelId"],
+      channelTitle: currentVideo["snippet"]["channelTitle"],
+      description: currentVideo["snippet"]["description"],
+      publisheTime: currentVideo["snippet"]["publishTime"],
+      dateAdded: Date(),
+      duration: currentVideo["contentDetails"]["duration"],
+      thumbnailHigh: currentVideo["snippet"]["thumbnails"]["high"]["url"],
+      userRating: 0,
+    };
+    axios
+      .post("http://localhost:5000/archive/add/", videoFile)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error.response);
+      });
+  };
+
+  useEffect(() => {
+    initialRequest();
+  }, []);
+
   return {
     currentVideo,
     previousVideo,
     nextVideo,
     initialRequest,
+    submitToArchive,
   };
 }
 
