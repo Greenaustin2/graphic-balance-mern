@@ -77,6 +77,7 @@ function usePlayer() {
       .post("http://localhost:5000/archive/add/", videoFile)
       .then(function (response) {
         console.log(response);
+        alert("succesfully submitted to archive");
       })
       .catch(function (error) {
         console.log(error.response);
@@ -87,6 +88,7 @@ function usePlayer() {
     initialRequest();
   }, []);
 
+  /////////////////////////////////////////////////////////////////////////
   return {
     currentVideo,
     previousVideo,

@@ -6,8 +6,6 @@ import VidInfo from "../components/VidInfo";
 import DatabaseSubmit from "../components/DatabaseSubmit";
 import TableWrapper from "../components/TableWrapper";
 
-import "../css/archive.css";
-
 const Archive = () => {
   const {
     videoData,

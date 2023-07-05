@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 
 const list = [
   "Helvetica",
@@ -7,7 +6,7 @@ const list = [
   "Verdana",
   "Tahoma",
   "Trebuchet",
-  "Impact",
+  // "Impact",
   "Gill Sans",
   "Times New Roman",
   "Georgia",
@@ -18,29 +17,43 @@ const list = [
   "Lucida",
   "Monaco",
   "Bradley",
-  "Brush Script",
+  // "Brush Script",
   "Luminari",
-  "Comic Sans",
+  // "Comic` Sans",
 ];
+
+const GraphicBalance = () => {
+  var repeatedString = "";
+  var text = "GRAPHICBALANCE";
+  for (let i = 0; i < 5; i++) {
+    repeatedString += text;
+    console.log(text);
+  }
+  return repeatedString;
+};
 
 const TextAnimation = () => {
   let timer;
   var i = 0;
   const [font, setFont] = useState("Helvetica");
+  // const [color, setColor] = -useState("black");
 
+  // var randomColor = "#000000".replace(/0/g, function () {
+  //   return (~~(Math.random() * 16)).toString(16);
+  // });
   const updateCount = () => {
     timer =
       !timer &&
       setInterval(() => {
-        if (i <= list.length) {
+        if (i <= list.length - 1) {
           setFont(list[i]);
+          // setColor(randomColor);
           i += 1;
         } else {
           i = 0;
         }
       }, 100);
   };
-
   useEffect(() => {
     updateCount();
 
@@ -48,8 +61,11 @@ const TextAnimation = () => {
   }, []);
 
   return (
-    <div>
-      <h1 style={{ fontFamily: font }}>Graphic Balance</h1>
+    <div className="text-animation-container">
+      <p className="text-animation" style={{ fontFamily: font }}>
+        <GraphicBalance />
+        <GraphicBalance />
+      </p>
     </div>
   );
 };

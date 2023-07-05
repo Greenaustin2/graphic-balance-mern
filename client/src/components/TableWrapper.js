@@ -1,6 +1,5 @@
 import { formatTime, formatDate } from "../utils/timeConversion";
 import SortingButtons from "../components/SortingButtons";
-// import VideoDataTable from "../components/VideoDataTable";
 
 const TableWrapper = ({
   videoData,
@@ -23,6 +22,7 @@ const TableWrapper = ({
           <td>{videoArray[key]["channelTitle"]}</td>
           <td>{formatTime(videoArray[key]["duration"])}</td>
           <td>{formatDate(videoArray[key]["publisheTime"])}</td>
+          <td>{formatDate(videoArray[key]["dateAdded"])}</td>
         </tr>
       );
     });
@@ -58,6 +58,13 @@ const TableWrapper = ({
             <SortingButtons
               loadVideoArchive={loadVideoArchive}
               sortParameter={"publisheTime"}
+            />
+          </th>
+          <th>
+            date added
+            <SortingButtons
+              loadVideoArchive={loadVideoArchive}
+              sortParameter={"dateAdded"}
             />
           </th>
         </tr>

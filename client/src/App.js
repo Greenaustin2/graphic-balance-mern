@@ -3,9 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./pages/main";
 import Archive from "./pages/archive";
 import Splash from "./pages/splash";
-
+import "./css/app.css";
 const App = () => {
-  console.log("app re render");
   return (
     <div>
       <Routes>

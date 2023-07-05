@@ -1,0 +1,74 @@
+.splash {
+  height: 100vh;
+  width: 100vw;
+  /* border: solid green; */
+  background-color: white;
+}
+
+.splash > * {
+  color: #5920d6;
+  color: black;
+  mix-blend-mode: difference;
+}
+
+.text-animation-container {
+  /* border: solid red; */
+  width: 110vw;
+  height: 100vh;
+  overflow: hidden;
+  margin-left: -5%;
+  /* margin: auto; */
+  position: absolute;
+  border: solid red;
+}
+
+.text-animation {
+  font-size: 25vw;
+  margin: 0;
+  line-height: 50%;
+  overflow-wrap: break-word;
+  font-kerning: auto;
+  color: white;
+  text-align: center;
+  transition: ease 0.25s;
+  user-select: none;
+}
+
+.main-nav {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-button {
+  position: absolute;
+  animation-name: button;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  border: none;
+  background-color: transparent;
+  transition: 0.25s ease;
+  font-family: "Lucida Console", monospace;
+  font-size: 5vw;
+  color: white;
+}
+
+.nav-button:hover {
+  color: gold;
+}
+.nav-button:active {
+  color: red;
+}
+
+@keyframes button {
+  0% {
+    opacity: 70%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 70%;
+  }
+}

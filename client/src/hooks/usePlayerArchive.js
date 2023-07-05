@@ -60,7 +60,6 @@ function usePlayerArchive() {
 
   const handleTableClick = (id) => {
     setCurrentVideo(id);
-    // console.dir(id);
   };
 
   //Update currentVideo State only when videoData is defined, skip initial render
