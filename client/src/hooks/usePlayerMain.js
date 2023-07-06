@@ -17,6 +17,7 @@ function usePlayer() {
     updateWatchHistory(result);
     const result2 = await YoutubeApi();
     nextVideoRef.current = result2;
+    // setCurrentVideo({ id: "PpRrG_b23y0" });
   };
 
   //Appends current video to the watch history array

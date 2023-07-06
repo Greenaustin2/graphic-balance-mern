@@ -1,5 +1,15 @@
 body {
+  height: 100vh;
+  width: 100vw;
   /* overflow: hidden; */
-  /* border: solid pink; */
+  background-image: linear-gradient(315deg, #3f3813 0%, rgb(73, 73, 73) 74%);
   margin: 0;
+  /* border: solid green; */
+  background-attachment: fixed;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  /* border: solid red; */
 }

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls.js";
 import usePlayer from "../hooks/usePlayerMain";
+import "../css/main.css";
 
 const Main = () => {
   const { currentVideo, previousVideo, nextVideo, submitToArchive } =
@@ -11,13 +12,15 @@ const Main = () => {
 
   return (
     <div className="main">
-      <h1>Main</h1>
-      <form onSubmit={() => navigate("/archive")}>
-        <input type="submit" value="archive" />
-      </form>
-      <form onSubmit={() => navigate("/")}>
-        <input type="submit" value="splash" />
-      </form>
+      <h1 className="main-header">GRAPHIC BALANCE</h1>
+      <div className="nav-wrapper">
+        <button className="nav" onClick={() => navigate("/archive")}>
+          archive
+        </button>
+        <button className="nav" onClick={() => navigate("/")}>
+          about
+        </button>
+      </div>
 
       {currentVideo && (
         <IframeConstructor

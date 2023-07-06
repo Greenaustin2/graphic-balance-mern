@@ -9,35 +9,43 @@ const IframeControls = ({
   handleDelete,
 }) => {
   return (
-    <div>
-      <div>
-        {submitToArchive && (
-          <button
-            type="button"
-            value="Submit to Archive"
-            onClick={submitToArchive}
-          >
-            Archive
-          </button>
-        )}
-      </div>
-      <div>
-        <button type="button" onClick={nextVideo} value="Next">
-          Next
+    <div className="iframe-controls">
+      {submitToArchive && (
+        <button
+          className="control"
+          type="button"
+          value="Submit to Archive"
+          onClick={submitToArchive}
+        >
+          submit to archive
         </button>
-      </div>
-      <div>
-        <button type="button" onClick={previousVideo} value="Previous">
-          Previous
+      )}
+      <button
+        className="control"
+        type="button"
+        onClick={nextVideo}
+        value="Next"
+      >
+        next
+      </button>
+      <button
+        className="control"
+        type="button"
+        onClick={previousVideo}
+        value="Previous"
+      >
+        Previous
+      </button>
+      {handleDelete && (
+        <button
+          className="control"
+          type="button"
+          onClick={handleDelete}
+          value="Delete"
+        >
+          previous
         </button>
-      </div>
-      <div>
-        {handleDelete && (
-          <button type="button" onClick={handleDelete} value="Delete">
-            Delete
-          </button>
-        )}
-      </div>
+      )}
     </div>
   );
 };

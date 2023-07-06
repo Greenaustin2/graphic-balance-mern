@@ -6,7 +6,6 @@ const list = [
   "Verdana",
   "Tahoma",
   "Trebuchet",
-  // "Impact",
   "Gill Sans",
   "Times New Roman",
   "Georgia",
@@ -32,38 +31,39 @@ const GraphicBalance = () => {
   return repeatedString;
 };
 
-const TextAnimation = () => {
+const TextAnimation = ({ containerClass, textClass, interval }) => {
   let timer;
-  var i = 0;
+
+  // var i = 0;
   const [font, setFont] = useState("Helvetica");
   // const [color, setColor] = -useState("black");
 
   // var randomColor = "#000000".replace(/0/g, function () {
   //   return (~~(Math.random() * 16)).toString(16);
   // });
+
   const updateCount = () => {
     timer =
       !timer &&
       setInterval(() => {
-        if (i <= list.length - 1) {
-          setFont(list[i]);
-          // setColor(randomColor);
-          i += 1;
-        } else {
-          i = 0;
-        }
-      }, 100);
+        // if (i <= list.length - listIndex) {
+        //   setFont(list[i]);
+        //   i += 1;
+        // } else {
+        //   i = 0;
+        // }
+        console.log(interval);
+        setFont(list[Math.floor(Math.random() * list.length)]);
+      }, interval);
   };
   useEffect(() => {
     updateCount();
-
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="text-animation-container">
-      <p className="text-animation" style={{ fontFamily: font }}>
-        <GraphicBalance />
+    <div className={containerClass}>
+      <p className={textClass} style={{ fontFamily: font }}>
         <GraphicBalance />
       </p>
     </div>

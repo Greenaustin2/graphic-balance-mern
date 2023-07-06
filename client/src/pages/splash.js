@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
-import usePlayer from "../hooks/usePlayerMain";
+// import usePlayer from "../hooks/usePlayerMain";
 import TextAnimation from "../utils/textAnimation";
 import "../css/splash.css";
 
@@ -16,12 +16,21 @@ const Splash = () => {
   // }, []);
   return (
     <div className="splash">
-      <TextAnimation />
-      <div className="main-nav">
-        <form onSubmit={handleSubmit}>
-          <input className="nav-button" type="submit" value="enter" />
-        </form>
-      </div>
+      <TextAnimation
+        containerClass="text-animation-container"
+        textClass="text-animation"
+        interval={500}
+      />
+      <TextAnimation
+        containerClass="text-animation-container secondary"
+        textClass="text-animation secondary"
+        interval={300}
+      />
+      <h1 className="splash-header">GRAPHIC BALANCE</h1>
+      {/* <div className="circle"></div> */}
+      <form onSubmit={handleSubmit}>
+        <input className="nav-button" type="submit" value="enter" />
+      </form>
     </div>
   );
 };

@@ -1,8 +1,10 @@
 .splash {
   height: 100vh;
   width: 100vw;
-  /* border: solid green; */
-  background-color: white;
+  background-image: linear-gradient(315deg, #3f3813 0%, rgb(73, 73, 73) 74%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .splash > * {
@@ -11,13 +13,25 @@
   mix-blend-mode: difference;
 }
 
+.splash-header {
+  position: absolute;
+  text-align: center;
+  font-family: "Monaco";
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  font-size: 10vw;
+  text-shadow: 1px 4px 40px #c1c1c1a5, 1px 4px 4px #4e4e4e;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  user-select: none;
+}
+
 .text-animation-container {
   /* border: solid red; */
   width: 110vw;
   height: 100vh;
   overflow: hidden;
   margin-left: -5%;
-  /* margin: auto; */
   position: absolute;
   border: solid red;
 }
@@ -28,34 +42,46 @@
   line-height: 50%;
   overflow-wrap: break-word;
   font-kerning: auto;
-  color: white;
+  color: rgb(0, 0, 0);
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(147, 146, 146);
   text-align: center;
   transition: ease 0.25s;
   user-select: none;
+  text-shadow: 1px 4px 4px #716c52;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
 }
 
-.main-nav {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.secondary {
+  color: black;
+  -webkit-text-stroke-width: 3px;
+  text-shadow: 1px 4px 4px rgb(73, 73, 73);
+
+  margin-left: -3%;
 }
 
 .nav-button {
+  z-index: 500 !important;
   position: absolute;
   animation-name: button;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   border: none;
   background-color: transparent;
+  font-family: "Monaco";
+  font-size: 1.5vw;
+  text-align: center;
+  margin-left: -2.8%;
+  margin-top: -1.5%;
+  color: #00000000;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
   transition: 0.25s ease;
-  font-family: "Lucida Console", monospace;
-  font-size: 5vw;
-  color: white;
 }
 
 .nav-button:hover {
-  color: gold;
+  transition: 0.25s ease;
 }
 .nav-button:active {
   color: red;
@@ -63,12 +89,12 @@
 
 @keyframes button {
   0% {
-    opacity: 70%;
+    opacity: 5%;
   }
-  50% {
+  40% {
     opacity: 100%;
   }
   100% {
-    opacity: 70%;
+    opacity: 5%;
   }
 }

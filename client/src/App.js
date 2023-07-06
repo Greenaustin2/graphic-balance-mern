@@ -6,7 +6,7 @@ import Splash from "./pages/splash";
 import "./css/app.css";
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <Routes>
         <Route exact path="/" element={<Splash />} />
         <Route path="/main" element={<Main />} />
