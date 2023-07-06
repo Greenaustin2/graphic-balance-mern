@@ -31,7 +31,7 @@ const GraphicBalance = () => {
   return repeatedString;
 };
 
-const TextAnimation = ({ containerClass, textClass, interval }) => {
+const TextAnimation = ({ containerClass, textClass, interval, secondary }) => {
   let timer;
 
   // var i = 0;
@@ -62,8 +62,8 @@ const TextAnimation = ({ containerClass, textClass, interval }) => {
   }, []);
 
   return (
-    <div className={containerClass}>
-      <p className={textClass} style={{ fontFamily: font }}>
+    <div className={`${containerClass} ${secondary}`}>
+      <p className={`${textClass} ${secondary}`} style={{ fontFamily: font }}>
         <GraphicBalance />
       </p>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink } from "react-external-link";
 import { formatDate } from "../utils/timeConversion";
+import s from "../css/vidInfo.module.css";
 
 const VidInfo = ({ currentVideo, videoData }) => {
   let selectedVideo;
@@ -11,22 +12,24 @@ const VidInfo = ({ currentVideo, videoData }) => {
   }
 
   return (
-    <div>
+    <div className={s.infoContainer}>
       <ExternalLink
         href={"https://www.youtube.com/watch?v=" + selectedVideo["id"]}
       >
-        <span>{selectedVideo["videoTitle"]}</span>
+        <span className={s.link}>{selectedVideo["videoTitle"]}</span>
       </ExternalLink>
 
       <br />
       <ExternalLink
         href={"http://www.youtube.com/channel/" + selectedVideo["channelId"]}
       >
-        <span>{selectedVideo["channelTitle"]}</span>
+        <span className={s.link}>User: {selectedVideo["channelTitle"]}</span>
       </ExternalLink>
-
-      <p>{selectedVideo["description"]}</p>
-      <p>{formatDate(selectedVideo["publisheTime"])}</p>
+      <br />
+      <p className={s.text}>{selectedVideo["description"]}</p>
+      <p className={s.text}>
+        Upload Date: {formatDate(selectedVideo["publisheTime"])}
+      </p>
     </div>
   );
 };

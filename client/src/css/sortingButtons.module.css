@@ -1,0 +1,17 @@
+.sortingButtons {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0;
+  /* float: right; */
+}
+
+.sortingButtons:active {
+  color: rgba(255, 228, 75, 0.318);
+}
+
+.sortingButtonsWrapper {
+  display: inline;
+  width: fit-content;
+  /* float: right; */
+}

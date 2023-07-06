@@ -1,0 +1,23 @@
+.playerWrapper {
+  position: relative;
+  padding-bottom: 40%;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.playerWrapper iframe {
+  position: absolute;
+  /* top: 0;
+    left: 0; */
+  margin-left: 10%;
+  margin-top: 20px;
+  margin-bottom: 0;
+  /* align-content: center; */
+  width: 80%;
+  height: 90%;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.536);
+  background-color: black;
+}
+
+.youtubePlayer {
+}

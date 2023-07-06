@@ -1,8 +1,21 @@
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
+import s from "../css/sortingButtons.module.css";
+
 const SortingButtons = ({ loadVideoArchive, sortParameter }) => {
   return (
-    <div>
-      <button onClick={() => loadVideoArchive(sortParameter, 1)}>^</button>
-      <button onClick={() => loadVideoArchive(sortParameter, -1)}>V</button>
+    <div className={s.sortingButtonsWrapper}>
+      <button
+        className={s.sortingButtons}
+        onClick={() => loadVideoArchive(sortParameter, 1)}
+      >
+        <GoTriangleUp />
+      </button>
+      <button
+        className={s.sortingButtons}
+        onClick={() => loadVideoArchive(sortParameter, -1)}
+      >
+        <GoTriangleDown />
+      </button>
     </div>
   );
 };

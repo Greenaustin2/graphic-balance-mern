@@ -5,6 +5,7 @@ import usePlayerArchive from "../hooks/usePlayerArchive";
 import VidInfo from "../components/VidInfo";
 import DatabaseSubmit from "../components/DatabaseSubmit";
 import TableWrapper from "../components/TableWrapper";
+import s from "../css/archive.module.css";
 
 const Archive = () => {
   const {
@@ -19,17 +20,19 @@ const Archive = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container">
-      <div classname="header">
-        <h1>Archive</h1>
-        <form onSubmit={() => navigate("/main")}>
-          <input type="submit" value="main" />
-        </form>
-        <form onSubmit={() => navigate("/")}>
-          <input type="submit" value="splash" />
-        </form>
+    <div className={s.container}>
+      <div className={s.header}>
+        <h1 className={s.mainHeader}>GRAPHIC BALANCE</h1>
+        <div className={s.navWrapper}>
+          <button className={s.nav} onClick={() => navigate("/main")}>
+            home
+          </button>
+          <button className={s.nav} onClick={() => navigate("/")}>
+            about
+          </button>
+        </div>
       </div>
-      <div className="left">
+      <div className={s.left}>
         <button onClick={() => loadVideoArchive()}>default sort</button>
         <TableWrapper
           videoData={videoData}
@@ -38,7 +41,7 @@ const Archive = () => {
           loadVideoArchive={loadVideoArchive}
         />
       </div>
-      <div className="right">
+      <div className={s.right}>
         {currentVideo && (
           <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
         )}

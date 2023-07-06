@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import Youtube from "react-youtube";
 // import VideosContext from "../context/videos";
+import s from "../css/iframeConstructor.module.css";
 
 const opts = {
   height: "100%",
@@ -21,12 +22,12 @@ const IframeConstructor = ({ currentVideo, onEnd }) => {
   console.log("iframe function entered");
 
   return (
-    <div className="player-wrapper">
+    <div className={s.playerWrapper}>
       <Youtube
         opts={opts}
         videoId={currentVideo}
         onEnd={onEnd}
-        className="youtube-player"
+        className={s.youtubePlayer}
         // onReady={(e) => e.target.loadVideoById(currentVideo)}
       />
     </div>

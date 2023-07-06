@@ -1,5 +1,6 @@
 import { formatTime, formatDate } from "../utils/timeConversion";
 import SortingButtons from "../components/SortingButtons";
+import s from "../css/tableWrapper.module.css";
 
 const TableWrapper = ({
   videoData,
@@ -9,14 +10,13 @@ const TableWrapper = ({
 }) => {
   const VideoDataTable = (videoData) => {
     const videoArray = videoData["videoData"];
-    console.log("table re render");
     return Object.keys(videoArray).map((key, value) => {
       const id = videoArray[key]["_id"];
       return (
         <tr
           key={id}
           onClick={() => handleTableClick(id)}
-          className={currentVideo === id ? "active" : null}
+          className={currentVideo === id ? `${s.active}` : null}
         >
           <td>{videoArray[key]["videoTitle"]}</td>
           <td>{videoArray[key]["channelTitle"]}</td>
@@ -28,56 +28,59 @@ const TableWrapper = ({
     });
   };
   return (
-    <table>
-      <tbody>
-        <tr>
-          <th>
-            title
-            <SortingButtons
-              loadVideoArchive={loadVideoArchive}
-              sortParameter={"videoTitle"}
-            />
-          </th>
-          <th>
-            channel
-            <SortingButtons
-              loadVideoArchive={loadVideoArchive}
-              sortParameter={"channelTitle"}
-            />
-          </th>
-          <th>
-            duration
-            <SortingButtons
-              loadVideoArchive={loadVideoArchive}
-              sortParameter={"duration"}
-            />
-          </th>
+    <div className={`${s.tableWrapper} ${s.tableFixHead}`}>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              TITLE
+              <SortingButtons
+                loadVideoArchive={loadVideoArchive}
+                sortParameter={"videoTitle"}
+              />
+            </th>
+            <th>
+              CHANNEL
+              <SortingButtons
+                loadVideoArchive={loadVideoArchive}
+                sortParameter={"channelTitle"}
+              />
+            </th>
+            <th>
+              DURATION
+              <SortingButtons
+                loadVideoArchive={loadVideoArchive}
+                sortParameter={"duration"}
+              />
+            </th>
 
-          <th>
-            date
-            <SortingButtons
-              loadVideoArchive={loadVideoArchive}
-              sortParameter={"publisheTime"}
+            <th>
+              DATE
+              <SortingButtons
+                loadVideoArchive={loadVideoArchive}
+                sortParameter={"publisheTime"}
+              />
+            </th>
+            <th>
+              DATE ADDED
+              <SortingButtons
+                loadVideoArchive={loadVideoArchive}
+                sortParameter={"dateAdded"}
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {videoData && (
+            <VideoDataTable
+              videoData={videoData}
+              handleTableClick={handleTableClick}
+              currentVideo={currentVideo}
             />
-          </th>
-          <th>
-            date added
-            <SortingButtons
-              loadVideoArchive={loadVideoArchive}
-              sortParameter={"dateAdded"}
-            />
-          </th>
-        </tr>
-
-        {videoData && (
-          <VideoDataTable
-            videoData={videoData}
-            handleTableClick={handleTableClick}
-            currentVideo={currentVideo}
-          />
-        )}
-      </tbody>
-    </table>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

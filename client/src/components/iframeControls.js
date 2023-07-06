@@ -1,5 +1,5 @@
 import React from "react";
-
+import s from "../css/iframeControls.module.css";
 // import VideosContext from "../context/videos";
 
 const IframeControls = ({
@@ -9,10 +9,10 @@ const IframeControls = ({
   handleDelete,
 }) => {
   return (
-    <div className="iframe-controls">
+    <div className={s.iframeControls}>
       {submitToArchive && (
         <button
-          className="control"
+          className={s.control}
           type="button"
           value="Submit to Archive"
           onClick={submitToArchive}
@@ -21,7 +21,7 @@ const IframeControls = ({
         </button>
       )}
       <button
-        className="control"
+        className={s.control}
         type="button"
         onClick={nextVideo}
         value="Next"
@@ -29,21 +29,21 @@ const IframeControls = ({
         next
       </button>
       <button
-        className="control"
+        className={s.control}
         type="button"
         onClick={previousVideo}
         value="Previous"
       >
-        Previous
+        previous
       </button>
       {handleDelete && (
         <button
-          className="control"
+          className={s.control}
           type="button"
           onClick={handleDelete}
           value="Delete"
         >
-          previous
+          delete
         </button>
       )}
     </div>
