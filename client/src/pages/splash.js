@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import TextAnimation from "../components/TextAnimation";
-// import "../css/splash.css";
 import s from "../css/splash.module.css";
 
 const Splash = () => {
