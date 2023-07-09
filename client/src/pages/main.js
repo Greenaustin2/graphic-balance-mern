@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import IframeConstructor from "../components/IframeConstructor";
-import IframeControls from "../components/IframeControls";
+import IframeControls from "../components/iframeControls";
 import usePlayer from "../hooks/usePlayerMain";
 import s from "../css/main.module.css";
 
