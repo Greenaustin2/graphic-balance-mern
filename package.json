@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "start": "cd ./backend/ && npm install && node server.js",
-    "heroku-postbuild": "cd ./frontend/ && npm install && npm run build",
-    "backend": "cd ./backend/ && nodemon server.js ",
-    "frontend": "cd ./frontend/ && yarn run start",
-    "test": "cd ./frontend/ && npm run test"
+    "start": "cd ./server/ && npm install && node server.js",
+    "heroku-postbuild": "cd ./client/ && npm install && npm run build",
+    "backend": "cd ./server/ && nodemon server.js ",
+    "frontend": "cd ./client/ && npm run start",
+    "test": "cd ./client/ && npm run test"
   },
   "engines": {
     "node": "18.x"
