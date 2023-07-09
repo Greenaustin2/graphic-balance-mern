@@ -1,6 +1,5 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import Youtube from "react-youtube";
-// import VideosContext from "../context/videos";
 import s from "../css/iframeConstructor.module.css";
 
 const opts = {
@@ -12,8 +11,8 @@ const opts = {
     playsInline: 1,
     rel: 0,
     modestbranding: 1,
-    controls: 1,
-    color: "white",
+    controls: 0,
+    // color: "white",
     fs: 1,
   },
 };
