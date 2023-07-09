@@ -1,6 +1,4 @@
-import React from "react";
 import s from "../css/iframeControls.module.css";
-// import VideosContext from "../context/videos";
 
 const IframeControls = ({
   previousVideo,
