@@ -16,9 +16,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-let corsOptions = {
-  origin: ["URL ALLOWED"],
-};
+// let corsOptions = {
+//   origin: ["URL ALLOWED"],
+// };
 
 app.use(cors(corsOptions));
 app.use(express.json());
