@@ -32,7 +32,7 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("http://localhost:5000/archive", {
+      .get("/archive", {
         params: {
           sortKey: sortKey,
           sortDirection: sortDirection,
@@ -49,7 +49,7 @@ function usePlayerArchive() {
 
   const handleDelete = () => {
     axios
-      .delete("http://localhost:5000/archive" + currentVideo)
+      .delete("/archive" + currentVideo)
       .then(() => {
         console.log("video deleted");
       })
