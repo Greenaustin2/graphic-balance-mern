@@ -15,7 +15,11 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(cors());
+let corsOptions = {
+  origin: ["URL ALLOWED"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;

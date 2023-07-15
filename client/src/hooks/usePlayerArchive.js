@@ -49,7 +49,11 @@ function usePlayerArchive() {
 
   const handleDelete = () => {
     axios
+<<<<<<< HEAD
       .delete("http://localhost:5000/archive/" + currentVideo)
+=======
+      .delete("http://localhost:5000/archive" + currentVideo)
+>>>>>>> f782cb4 (cors options added)
       .then(() => {
         console.log("video deleted");
       })
