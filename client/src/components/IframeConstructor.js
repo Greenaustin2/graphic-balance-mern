@@ -11,7 +11,7 @@ const opts = {
     playsInline: 1,
     rel: 0,
     modestbranding: 1,
-    controls: 0,
+    controls: 1,
     // color: "white",
     fs: 1,
   },

@@ -3,14 +3,14 @@
 }
 
 .link {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-family: "Monaco";
   font-size: 0.6rem;
 }
 
 .text {
-  color: white;
+  color: rgb(0, 0, 0);
   font-family: "Monaco";
   font-size: 0.6rem;
 }

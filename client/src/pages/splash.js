@@ -14,13 +14,19 @@ const Splash = () => {
       <TextAnimation
         containerClass={s.textAnimationContainer}
         textClass={s.textAnimation}
-        interval={500}
+        interval={400}
       />
       <TextAnimation
         containerClass={s.textAnimationContainer}
         textClass={s.textAnimation}
         secondary={s.secondary}
         interval={300}
+      />
+      <TextAnimation
+        containerClass={s.textAnimationContainer}
+        textClass={s.textAnimation}
+        tertiary={s.tertiary}
+        interval={200}
       />
       <h1 className={s.splashHeader}>GRAPHIC BALANCE</h1>
       {/* <div className="circle"></div> */}

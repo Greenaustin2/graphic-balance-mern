@@ -31,7 +31,7 @@ table {
   background-color: none;
   font-family: "Monaco";
   font-size: 0.75rem;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-left: 20px;
   border-collapse: collapse;
 }
@@ -44,8 +44,8 @@ td {
   padding-bottom: 0px;
 }
 td {
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+  border-left: 1px solid rgb(0, 0, 0);
+  border-right: 1px solid rgb(0, 0, 0);
 }
 
 th {
@@ -59,13 +59,13 @@ tr {
 }
 
 tr:hover:not(:first-child) {
-  background-color: rgba(240, 240, 240, 0.13) !important;
+  background-color: rgba(0, 0, 0, 0.13) !important;
   transition: 0.15s ease;
   cursor: pointer;
 }
 
 tr:active:not(:first-child) {
-  background-color: rgba(255, 228, 75, 0.318) !important;
+  background-color: rgba(0, 0, 0, 0.318) !important;
   transition: 0.15s ease;
 }
 
