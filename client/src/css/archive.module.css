@@ -6,18 +6,18 @@ body {
   text-align: center;
   color: rgba(0, 0, 0, 0);
   font-family: "Monaco";
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(0, 0, 0);
+  -webkit-text-stroke-width: 0.05px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
   font-size: 2rem;
   margin: 0;
   /* border: solid red; */
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 2;
-}
+} */
 
 .header {
   grid-column: 1 / 3;
@@ -58,4 +58,31 @@ body {
 .nav:hover {
   transition: 0.25s ease;
   text-shadow: 0px 0px 10px #ffffffb9;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar:hover > .navbarDropdown {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.navbarHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* background-color: #ff0000; */
+}
+
+.navbarDropdown {
+  display: grid;
+  position: absolute;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #7f7f7fc7;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  /* mix-blend-mode: difference; */
 }

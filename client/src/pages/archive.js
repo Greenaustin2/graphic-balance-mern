@@ -32,29 +32,34 @@ const Archive = () => {
           </button>
         </div>
       </div>
-      <div className={s.left}>
-        <button onClick={() => loadVideoArchive()}>default sort</button>
-        <TableWrapper
-          videoData={videoData}
-          handleTableClick={handleTableClick}
-          currentVideo={currentVideo}
-          loadVideoArchive={loadVideoArchive}
-        />
-      </div>
-      <div className={s.right}>
-        {currentVideo && (
-          <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
-        )}
-        <IframeControls
-          previousVideo={previousVideo}
-          nextVideo={nextVideo}
-          handleDelete={handleDelete}
-          submitToArchive={null}
-        />
-        {videoData && currentVideo && (
-          <VidInfo currentVideo={currentVideo} videoData={videoData} />
-        )}
-        <DatabaseSubmit />
+      <div className={s.navbar}>
+        <div className={s.navbarHeader}>Archive List</div>
+        <div className={s.navbarDropdown}>
+          <div className={s.left}>
+            <button onClick={() => loadVideoArchive()}>default sort</button>
+            <TableWrapper
+              videoData={videoData}
+              handleTableClick={handleTableClick}
+              currentVideo={currentVideo}
+              loadVideoArchive={loadVideoArchive}
+            />
+          </div>
+        </div>
+        <div className={s.right}>
+          {currentVideo && (
+            <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
+          )}
+          <IframeControls
+            previousVideo={previousVideo}
+            nextVideo={nextVideo}
+            handleDelete={handleDelete}
+            submitToArchive={null}
+          />
+          {videoData && currentVideo && (
+            <VidInfo currentVideo={currentVideo} videoData={videoData} />
+          )}
+          <DatabaseSubmit />
+        </div>
       </div>
     </div>
   );
