@@ -16,9 +16,7 @@ const list = [
   "Lucida",
   "Monaco",
   "Bradley",
-  // "Brush Script",
   "Luminari",
-  // "Comic` Sans",
 ];
 
 const GraphicBalance = () => {
@@ -26,33 +24,23 @@ const GraphicBalance = () => {
   var text = "GRAPHICBALANCE";
   for (let i = 0; i < 5; i++) {
     repeatedString += text;
-    console.log(text);
   }
   return repeatedString;
 };
 
-const TextAnimation = ({ containerClass, textClass, interval, secondary }) => {
+const TextAnimation = ({
+  containerClass,
+  textClass,
+  interval,
+  secondary,
+  tertiary,
+}) => {
   let timer;
-
-  // var i = 0;
   const [font, setFont] = useState("Helvetica");
-  // const [color, setColor] = -useState("black");
-
-  // var randomColor = "#000000".replace(/0/g, function () {
-  //   return (~~(Math.random() * 16)).toString(16);
-  // });
-
   const updateCount = () => {
     timer =
       !timer &&
       setInterval(() => {
-        // if (i <= list.length - listIndex) {
-        //   setFont(list[i]);
-        //   i += 1;
-        // } else {
-        //   i = 0;
-        // }
-        console.log(interval);
         setFont(list[Math.floor(Math.random() * list.length)]);
       }, interval);
   };
@@ -62,8 +50,11 @@ const TextAnimation = ({ containerClass, textClass, interval, secondary }) => {
   }, []);
 
   return (
-    <div className={`${containerClass} ${secondary}`}>
-      <p className={`${textClass} ${secondary}`} style={{ fontFamily: font }}>
+    <div className={`${containerClass} ${secondary} ${tertiary}`}>
+      <p
+        className={`${textClass} ${secondary} ${tertiary}`}
+        style={{ fontFamily: font }}
+      >
         <GraphicBalance />
       </p>
     </div>

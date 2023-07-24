@@ -15,7 +15,8 @@
   /* align-content: center; */
   width: 80%;
   height: 90%;
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.536);
+
+  /* box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.536); */
   background-color: black;
 }
 

@@ -2,8 +2,8 @@
   text-align: center;
   color: rgba(0, 0, 0, 0);
   font-family: "Monaco";
-  -webkit-text-stroke-width: 0.05px;
-  -webkit-text-stroke-color: rgb(255, 255, 255);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0);
   font-size: 2rem;
   margin: 0;
 }
@@ -25,12 +25,12 @@
   border: none;
   background-color: transparent;
   font-family: "Monaco";
-  color: rgba(255, 255, 255, 0.683);
+  color: rgba(0, 0, 0, 0.683);
   margin: 50px, 0;
   transition: 0.25s ease;
 }
 
 .nav:hover {
   transition: 0.25s ease;
-  text-shadow: 0px 0px 10px #ffffffb9;
+  text-shadow: 0px 0px 10px #000000b9;
 }

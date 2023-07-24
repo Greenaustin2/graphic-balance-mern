@@ -8,12 +8,12 @@
   border: none;
   background-color: transparent;
   font-family: "Monaco";
-  color: rgba(255, 255, 255, 0.683);
+  color: rgba(0, 0, 0, 0.683);
   margin: 50px, 0;
   transition: 0.25s ease;
 }
 
 .control:hover {
   transition: 0.25s ease;
-  text-shadow: 0px 0px 10px #ffffffb9;
+  text-shadow: 0px 0px 10px #000000b9;
 }
