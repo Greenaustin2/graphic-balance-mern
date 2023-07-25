@@ -2,12 +2,14 @@ import { useNavigate } from "react-router";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls";
 import usePlayer from "../hooks/usePlayerMain";
+import useModal from "../hooks/useModal";
+import AboutModal from "../components/AboutModal";
 import s from "../css/main.module.css";
 
 const Main = () => {
   const { currentVideo, previousVideo, nextVideo, submitToArchive } =
     usePlayer();
-
+  const { handleClick, handleClose, showModal } = useModal();
   const navigate = useNavigate();
 
   return (
@@ -18,10 +20,13 @@ const Main = () => {
           archive
         </button>
         <button className={s.nav} onClick={() => navigate("/")}>
+          splash
+        </button>
+        <button className={s.nav} onClick={handleClick}>
           about
         </button>
       </div>
-
+      {showModal && <AboutModal handleClose={handleClose} />}
       {currentVideo && (
         <IframeConstructor
           currentVideo={currentVideo["id"]}

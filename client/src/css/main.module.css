@@ -9,13 +9,11 @@
 }
 
 .main {
-  /* border: solid pink; */
   height: 100%;
   width: 100%;
 }
 
 .navWrapper {
-  /* border: solid green; */
   margin: 0 auto;
   text-align: center;
 }
