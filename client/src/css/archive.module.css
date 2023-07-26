@@ -36,13 +36,13 @@ body {
   grid-column: 2;
   grid-row: 2;
   /* border: solid green; */
-  width: 100%;
 }
 
 .navWrapper {
   /* border: solid green; */
   margin: 0 auto;
   text-align: center;
+  width: max-content;
 }
 
 .nav {
@@ -80,9 +80,10 @@ body {
   position: absolute;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #7f7f7fc7;
-  max-height: 0;
+  max-height: 500px;
   overflow-y: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
+  width: max-content;
   /* mix-blend-mode: difference; */
 }

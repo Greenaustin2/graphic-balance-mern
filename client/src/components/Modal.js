@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
-import s from "../css/modal.module.css";
+import s from "../css/aboutModal.module.css";
 
 function Modal({ handleClose, children, actionBar }) {
   useEffect(() => {

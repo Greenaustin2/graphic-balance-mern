@@ -5,6 +5,8 @@ import usePlayerArchive from "../hooks/usePlayerArchive";
 import VidInfo from "../components/VidInfo";
 import DatabaseSubmit from "../components/DatabaseSubmit";
 import TableWrapper from "../components/TableWrapper";
+import useModal from "../hooks/useModal";
+import AboutModal from "../components/AboutModal";
 import s from "../css/archive.module.css";
 
 const Archive = () => {
@@ -17,6 +19,7 @@ const Archive = () => {
     handleDelete,
     handleTableClick,
   } = usePlayerArchive();
+  const { handleClick, handleClose, showModal } = useModal();
   const navigate = useNavigate();
 
   return (
@@ -28,6 +31,9 @@ const Archive = () => {
             home
           </button>
           <button className={s.nav} onClick={() => navigate("/")}>
+            splash
+          </button>
+          <button className={s.nav} onClick={handleClick}>
             about
           </button>
         </div>
@@ -35,32 +41,32 @@ const Archive = () => {
       <div className={s.navbar}>
         <div className={s.navbarHeader}>Archive List</div>
         <div className={s.navbarDropdown}>
-          <div className={s.left}>
-            <button onClick={() => loadVideoArchive()}>default sort</button>
-            <TableWrapper
-              videoData={videoData}
-              handleTableClick={handleTableClick}
-              currentVideo={currentVideo}
-              loadVideoArchive={loadVideoArchive}
-            />
-          </div>
-        </div>
-        <div className={s.right}>
-          {currentVideo && (
-            <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
-          )}
-          <IframeControls
-            previousVideo={previousVideo}
-            nextVideo={nextVideo}
-            handleDelete={handleDelete}
-            submitToArchive={null}
+          {/* <button onClick={() => loadVideoArchive()}>default sort</button> */}
+          <TableWrapper
+            videoData={videoData}
+            handleTableClick={handleTableClick}
+            currentVideo={currentVideo}
+            loadVideoArchive={loadVideoArchive}
           />
-          {videoData && currentVideo && (
-            <VidInfo currentVideo={currentVideo} videoData={videoData} />
-          )}
-          <DatabaseSubmit />
         </div>
       </div>
+      <div className={s.right}>
+        {currentVideo && (
+          <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
+        )}
+        <IframeControls
+          previousVideo={previousVideo}
+          nextVideo={nextVideo}
+          handleDelete={handleDelete}
+          submitToArchive={null}
+        />
+        {videoData && currentVideo && (
+          <VidInfo currentVideo={currentVideo} videoData={videoData} />
+        )}
+        <DatabaseSubmit />
+      </div>
+
+      {showModal && <AboutModal handleClose={handleClose} />}
     </div>
   );
 };

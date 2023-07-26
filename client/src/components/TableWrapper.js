@@ -31,7 +31,7 @@ const TableWrapper = ({
     <div className={`${s.tableWrapper} ${s.tableFixHead}`}>
       <table>
         <thead>
-          <tr>
+          <tr className={s.red}>
             <th>
               TITLE
               <SortingButtons

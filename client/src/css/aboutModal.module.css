@@ -28,14 +28,19 @@
   position: fixed;
   inset: 0px;
   background-color: gray;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
   opacity: 80%;
+  transition: all 0.3s ease;
 }
 
 .modalWindow {
   position: fixed;
   inset: 20px;
+  width: 50%;
+  height: 50%;
+  bottom: 30%;
   padding: 10px;
+  margin: auto;
   background-color: white;
   /* opacity: 80%; */
 }

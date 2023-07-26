@@ -26,7 +26,6 @@ const Main = () => {
           about
         </button>
       </div>
-      {showModal && <AboutModal handleClose={handleClose} />}
       {currentVideo && (
         <IframeConstructor
           currentVideo={currentVideo["id"]}
@@ -39,6 +38,7 @@ const Main = () => {
         nextVideo={nextVideo}
         submitToArchive={submitToArchive}
       />
+      {showModal && <AboutModal handleClose={handleClose} />}
     </div>
   );
 };
