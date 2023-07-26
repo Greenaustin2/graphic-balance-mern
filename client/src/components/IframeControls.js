@@ -21,18 +21,18 @@ const IframeControls = ({
       <button
         className={s.control}
         type="button"
-        onClick={nextVideo}
-        value="Next"
-      >
-        next
-      </button>
-      <button
-        className={s.control}
-        type="button"
         onClick={previousVideo}
         value="Previous"
       >
         previous
+      </button>
+      <button
+        className={s.control}
+        type="button"
+        onClick={nextVideo}
+        value="Next"
+      >
+        next
       </button>
       {handleDelete && (
         <button

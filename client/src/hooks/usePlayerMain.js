@@ -10,6 +10,16 @@ function usePlayer() {
   //Watch history tracks and stores previously watched videos
   const watchHistory = useRef([]);
 
+  const useKeyDown = (key, action) => {
+    useEffect(() => {
+      function onKeyup(e) {
+        if (e.key === key) action();
+      }
+      window.addEventListener("keyup", onKeyup);
+      return () => window.removeEventListener("keyup", onKeyup);
+    }, [currentVideo]);
+  };
+
   //currentVideo and nextVideoRef are asiggned apiRequest video results
   const initialRequest = async () => {
     const result = await YoutubeApi();
@@ -27,24 +37,55 @@ function usePlayer() {
   };
 
   //Skip to next video
+  // const nextVideo = (event) => {
+  //   if (event["_reactName"] === "onClick") {
+  //     event.preventDefault();
+  //   }
+  //   if (
+  //     currentVideo !== watchHistory.current[watchHistory.current.length - 1]
+  //   ) {
+  //     var index = watchHistory.current.findIndex((el) => {
+  //       return el === currentVideo;
+  //     });
+  //     setCurrentVideo(watchHistory.current[index + 1]);
+  //   } else {
+  //     submitApi();
+  //   }
+  // };
+
   const nextVideo = (event) => {
-    if (event["_reactName"] === "onClick") {
-      event.preventDefault();
+    if (event) {
+      if (event["_reactName"] === "onClick") {
+        event.preventDefault();
+      }
+    } else {
+      console.log("event undefined");
     }
     if (
       currentVideo !== watchHistory.current[watchHistory.current.length - 1]
     ) {
+      console.log("second if statement");
+
       var index = watchHistory.current.findIndex((el) => {
         return el === currentVideo;
       });
       setCurrentVideo(watchHistory.current[index + 1]);
+      console.log("end second if statement");
+      console.log(currentVideo);
     } else {
-      submitApi(event);
+      console.log("api");
+      submitApi();
     }
   };
   //Skip to previous video
   const previousVideo = (event) => {
-    event.preventDefault();
+    if (event) {
+      if (event["_reactName"] === "onClick") {
+        event.preventDefault();
+      }
+    } else {
+      console.log("event undefined");
+    }
     if (currentVideo !== watchHistory.current[0]) {
       var index = watchHistory.current.findIndex((el) => {
         return el === currentVideo;
@@ -96,6 +137,7 @@ function usePlayer() {
     nextVideo,
     initialRequest,
     submitToArchive,
+    useKeyDown,
   };
 }
 

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import Youtube from "react-youtube";
+import Youtube, { YoutubeProps } from "react-youtube";
 import s from "../css/iframeConstructor.module.css";
 
 const opts = {

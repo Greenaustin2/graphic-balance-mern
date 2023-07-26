@@ -61,7 +61,7 @@ body {
 }
 
 .navbar {
-  width: 100%;
+  width: 20%;
 }
 
 .navbar:hover > .navbarDropdown {
@@ -80,10 +80,10 @@ body {
   position: absolute;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #7f7f7fc7;
-  max-height: 500px;
+  max-height: 0px;
   overflow-y: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-  width: max-content;
+  width: 50vw;
   /* mix-blend-mode: difference; */
 }
