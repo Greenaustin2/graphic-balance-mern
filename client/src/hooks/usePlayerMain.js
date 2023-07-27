@@ -10,16 +10,6 @@ function usePlayer() {
   //Watch history tracks and stores previously watched videos
   const watchHistory = useRef([]);
 
-  const useKeyDown = (key, action) => {
-    useEffect(() => {
-      function onKeyup(e) {
-        if (e.key === key) action();
-      }
-      window.addEventListener("keyup", onKeyup);
-      return () => window.removeEventListener("keyup", onKeyup);
-    }, [currentVideo]);
-  };
-
   //currentVideo and nextVideoRef are asiggned apiRequest video results
   const initialRequest = async () => {
     const result = await YoutubeApi();
@@ -37,22 +27,6 @@ function usePlayer() {
   };
 
   //Skip to next video
-  // const nextVideo = (event) => {
-  //   if (event["_reactName"] === "onClick") {
-  //     event.preventDefault();
-  //   }
-  //   if (
-  //     currentVideo !== watchHistory.current[watchHistory.current.length - 1]
-  //   ) {
-  //     var index = watchHistory.current.findIndex((el) => {
-  //       return el === currentVideo;
-  //     });
-  //     setCurrentVideo(watchHistory.current[index + 1]);
-  //   } else {
-  //     submitApi();
-  //   }
-  // };
-
   const nextVideo = (event) => {
     if (event) {
       if (event["_reactName"] === "onClick") {
@@ -137,7 +111,7 @@ function usePlayer() {
     nextVideo,
     initialRequest,
     submitToArchive,
-    useKeyDown,
+    // useKeyDown,
   };
 }
 

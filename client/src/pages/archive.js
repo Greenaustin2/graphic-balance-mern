@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import IframeConstructor from "../components/IframeConstructor";
 import IframeControls from "../components/IframeControls";
 import usePlayerArchive from "../hooks/usePlayerArchive";
+import useKeyDown from "../hooks/useKeyDown";
 import VidInfo from "../components/VidInfo";
 import DatabaseSubmit from "../components/DatabaseSubmit";
 import TableWrapper from "../components/TableWrapper";
@@ -21,6 +22,9 @@ const Archive = () => {
   } = usePlayerArchive();
   const { handleClick, handleClose, showModal } = useModal();
   const navigate = useNavigate();
+
+  useKeyDown("ArrowRight", nextVideo, currentVideo);
+  useKeyDown("ArrowLeft", previousVideo, currentVideo);
 
   return (
     <div className={s.container}>
