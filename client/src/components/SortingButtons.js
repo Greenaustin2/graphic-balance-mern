@@ -15,12 +15,6 @@ const SortingButtons = ({ loadVideoArchive, sortParameter }) => {
       <button className={s.sortingButtons} onClick={handleClick}>
         {sortDirection ? <GoTriangleUp /> : <GoTriangleDown />}
       </button>
-      {/* <button
-        className={s.sortingButtons}
-        onClick={() => loadVideoArchive(sortParameter, -1)}
-      >
-        <GoTriangleDown />
-      </button> */}
     </div>
   );
 };
