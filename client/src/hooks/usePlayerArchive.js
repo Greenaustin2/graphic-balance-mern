@@ -31,7 +31,7 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("https://graphic-balance-mern.vercel.app/archive", {
+      .get("http://graphic-balance-mern.vercel.app/archive", {
         params: {
           sortKey: sortKey,
           sortDirection: sortDirection,
@@ -48,7 +48,7 @@ function usePlayerArchive() {
 
   const handleDelete = () => {
     axios
-      .delete("https://graphic-balance-mern.vercel.app/archive" + currentVideo)
+      .delete("http://graphic-balance-mern.vercel.app/archive" + currentVideo)
       .then(() => {
         console.log("video deleted");
       })
