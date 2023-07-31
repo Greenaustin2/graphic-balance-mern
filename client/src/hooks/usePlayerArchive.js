@@ -39,6 +39,7 @@ function usePlayerArchive() {
       })
       .then((response) => {
         console.log("load video archive response");
+        console.log(response.data);
         setVideoData(response.data);
       })
       .catch((error) => {
