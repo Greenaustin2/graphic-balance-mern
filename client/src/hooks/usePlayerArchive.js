@@ -68,6 +68,7 @@ function usePlayerArchive() {
       didMount.current = true;
       return;
     }
+    console.log("video data from use effect" + videoData);
     setCurrentVideo(videoData[0]["_id"]);
   }, [videoData]);
 
