@@ -31,7 +31,7 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("https://graphic-balance-mern.vercel.app/archive", {
+      .get("http://localhost:5000/archive", {
         params: {
           sortKey: sortKey,
           sortDirection: sortDirection,
