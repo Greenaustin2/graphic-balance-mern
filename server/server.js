@@ -18,7 +18,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://graphic-balance-mern.vercel.app",
+  credentials: false,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // let corsOptions = {
