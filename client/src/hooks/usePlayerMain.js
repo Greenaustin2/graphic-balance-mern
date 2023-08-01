@@ -90,7 +90,7 @@ function usePlayer() {
       userRating: 0,
     };
     axios
-      .post("http://localhost:5000/archive/add/", videoFile)
+      .post("graphic-balance-mern.vercel.app/archive-data/add/", videoFile)
       .then(function (response) {
         console.log(response);
         alert("succesfully submitted to archive");
