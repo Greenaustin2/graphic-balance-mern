@@ -31,12 +31,15 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("https://graphic-balance-mern.vercel.app/archive-data", {
-        params: {
-          sortKey: sortKey,
-          sortDirection: sortDirection,
-        },
-      })
+      .get(
+        "https://graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data",
+        {
+          params: {
+            sortKey: sortKey,
+            sortDirection: sortDirection,
+          },
+        }
+      )
       .then((response) => {
         console.log("load video archive response");
         console.log("response data" + response.data);
@@ -50,7 +53,8 @@ function usePlayerArchive() {
   const handleDelete = () => {
     axios
       .delete(
-        "https://graphic-balance-mern.vercel.app/archive-data" + currentVideo
+        "https://graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data" +
+          currentVideo
       )
       .then(() => {
         console.log("video deleted");
