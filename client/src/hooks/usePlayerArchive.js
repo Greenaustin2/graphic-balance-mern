@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
+axios.defaults.baseURL = "https://graphic-balance-mern.vercel.app";
+
 function usePlayerArchive() {
   const [videoData, setVideoData] = useState([]);
   const [currentVideo, setCurrentVideo] = useState("");
