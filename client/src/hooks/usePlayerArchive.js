@@ -29,8 +29,8 @@ function usePlayerArchive() {
   // fetch video archive data and set to videoData state
   //sortKey indicated varibale with which rows are sorted
   //sort direction accepts either 1 or -1, indicating ascending and descending values
-  function loadVideoArchive(sortKey, sortDirection) {
-    axios
+  async function loadVideoArchive(sortKey, sortDirection) {
+    await axios
       .get(
         "https://graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data",
         {
