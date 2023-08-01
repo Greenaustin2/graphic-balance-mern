@@ -29,10 +29,10 @@ function usePlayerArchive() {
   // fetch video archive data and set to videoData state
   //sortKey indicated varibale with which rows are sorted
   //sort direction accepts either 1 or -1, indicating ascending and descending values
-  async function loadVideoArchive(sortKey, sortDirection) {
-    await axios
+  function loadVideoArchive(sortKey, sortDirection) {
+    axios
       .get(
-        "https://graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data",
+        "graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data",
         {
           params: {
             sortKey: sortKey,
@@ -53,7 +53,7 @@ function usePlayerArchive() {
   const handleDelete = () => {
     axios
       .delete(
-        "https://graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data" +
+        "graphic-balance-mern-bxcnympej-greenaustin2.vercel.app/archive-data" +
           currentVideo
       )
       .then(() => {
