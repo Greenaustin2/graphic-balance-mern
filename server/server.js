@@ -13,14 +13,13 @@ const archiveRouter = require("./routes/archive");
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
-  app.get("/", (req, res) => {
+  app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
   });
 }
 
 app.use(cors());
 app.use(express.json());
-app.use("/archive-data", archiveRouter);
 
 // let corsOptions = {
 //   origin: ["URL ALLOWED"],
@@ -32,6 +31,7 @@ const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB Atlas connection established");
 });
+app.use("/archive-data", archiveRouter);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
