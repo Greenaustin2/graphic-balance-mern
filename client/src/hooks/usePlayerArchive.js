@@ -31,7 +31,7 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("http://localhost:8000/archive-data", {
+      .get("http://localhost:5000/archive-data", {
         params: {
           sortKey: sortKey,
           sortDirection: sortDirection,
