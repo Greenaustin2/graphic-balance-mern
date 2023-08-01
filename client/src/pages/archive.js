@@ -46,12 +46,14 @@ const Archive = () => {
         <div className={s.navbarHeader}>Archive List</div>
         <div className={s.navbarDropdown}>
           {/* <button onClick={() => loadVideoArchive()}>default sort</button> */}
-          <TableWrapper
-            videoData={videoData}
-            handleTableClick={handleTableClick}
-            currentVideo={currentVideo}
-            loadVideoArchive={loadVideoArchive}
-          />
+          {videoData && (
+            <TableWrapper
+              videoData={videoData}
+              handleTableClick={handleTableClick}
+              currentVideo={currentVideo}
+              loadVideoArchive={loadVideoArchive}
+            />
+          )}
         </div>
       </div>
       <div className={s.right}>
