@@ -11,8 +11,6 @@ const port = process.env.PORT || 5000;
 const archiveRouter = require("./routes/archive");
 
 app.use("/archive-data", archiveRouter);
-app.use(cors());
-app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
@@ -22,6 +20,8 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+app.use(cors());
+app.use(express.json());
 // let corsOptions = {
 //   origin: ["URL ALLOWED"],
 // };
