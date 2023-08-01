@@ -32,7 +32,7 @@ connection.once("open", () => {
 
 const archiveRouter = require("./routes/archive");
 
-app.use("/archive", archiveRouter);
+app.use("/archive-data", archiveRouter);
 
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
