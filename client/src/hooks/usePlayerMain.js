@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import YoutubeApi from "../api";
-import axios from "axios";
+// import axios from "axios";
+import instance from "../axiosConfig";
 
 function usePlayer() {
   //Current video state controls what is shown on screen to user
@@ -89,7 +90,7 @@ function usePlayer() {
       thumbnailHigh: currentVideo["snippet"]["thumbnails"]["high"]["url"],
       userRating: 0,
     };
-    axios
+    instance
       .post("/archive-data/add/", videoFile)
       .then(function (response) {
         console.log(response);

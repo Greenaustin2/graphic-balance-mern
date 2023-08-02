@@ -8,15 +8,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors()
-  //   {
-  //   origin: "https://graphic-balance-mern.vercel.app",
-  //   credentials: true,
-  //   methods: "GET, POST, PUT, DELETE",
-  //   allowedHeaders: "Authorization, Content-Type",
-  // }
-);
+app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
@@ -29,14 +21,14 @@ connection.once("open", () => {
 const archiveRouter = require("./routes/archive");
 app.use("/archive-data", archiveRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  });
+}
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}`);
 });
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../client/build")));
-
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-//   });
-// }

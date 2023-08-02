@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import axios from "axios";
-
-// axios.defaults.baseURL = "https://graphic-balance-mern.vercel.app";
-axios.defaults.baseURL = "http://localhost:5000";
+import instance from "../axiosConfig";
+// axios.defaults.baseURL =
+//   "graphic-balance-mern-2hdbgpvv4-greenaustin2.vercel.app";
+// axios.defaults.baseURL = "http://localhost:5000";
 
 function usePlayerArchive() {
   const [videoData, setVideoData] = useState([]);
@@ -33,7 +33,7 @@ function usePlayerArchive() {
   //sortKey indicated varibale with which rows are sorted
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
-    axios
+    instance
       .get("/archive-data/table", {
         params: {
           sortKey: sortKey,
@@ -51,8 +51,8 @@ function usePlayerArchive() {
   }
 
   const handleDelete = () => {
-    axios
-      .delete("/archive-data" + currentVideo)
+    instance
+      .delete("/archive-data/" + currentVideo)
       .then(() => {
         console.log("video deleted");
       })
@@ -77,7 +77,7 @@ function usePlayerArchive() {
 
   //Load video archive on initial render
   useEffect(() => {
-    loadVideoArchive("videoTitle", 1);
+    loadVideoArchive("dateAdded", -1);
   }, []);
 
   return {
