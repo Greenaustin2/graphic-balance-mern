@@ -1,7 +1,7 @@
 const router = require("express").Router();
 let Archive = require("../models/archive.model");
 
-router.route("/").get((req, res) => {
+router.route("/table").get((req, res) => {
   console.log("express router get request");
   var sortCriteria = {};
   sortCriteria[req.query.sortKey] = req.query.sortDirection;

@@ -90,7 +90,7 @@ function usePlayer() {
       userRating: 0,
     };
     axios
-      .post("http://localhost:5000/archive-data/add/", videoFile)
+      .post("/archive-data/add/", videoFile)
       .then(function (response) {
         console.log(response);
         alert("succesfully submitted to archive");

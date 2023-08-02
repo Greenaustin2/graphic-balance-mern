@@ -8,17 +8,7 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    headers: {
-      // "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-    // credentials: true,
-    origin: ["https://graphic-balance-mern.vercel.app/archive"],
-    methods: ["GET", "POST", "DELETE"],
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
@@ -35,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 
   app.get("/*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
   });
 }
 
