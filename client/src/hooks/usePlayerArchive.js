@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
-// axios.defaults.baseURL = "https://graphic-balance-mern.vercel.app";
+axios.defaults.baseURL = "https://graphic-balance-mern.vercel.app";
 // axios.defaults.baseURL = "http://localhost:5000";
 
 function usePlayerArchive() {
@@ -34,7 +34,7 @@ function usePlayerArchive() {
   //sort direction accepts either 1 or -1, indicating ascending and descending values
   function loadVideoArchive(sortKey, sortDirection) {
     axios
-      .get("https://graphic-balance-mern.vercel.app/archive-data", {
+      .get("/archive-data", {
         params: {
           sortKey: sortKey,
           sortDirection: sortDirection,

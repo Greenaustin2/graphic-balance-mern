@@ -20,6 +20,5 @@
   },
   "engines": {
     "node": "18.x"
-  },
-  "proxy": "https://graphic-balance-mern.vercel.app"
+  }
 }
