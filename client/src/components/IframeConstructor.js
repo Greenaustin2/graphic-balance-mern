@@ -12,7 +12,15 @@ const opts = {
     rel: 0,
     modestbranding: 1,
     controls: 1,
+<<<<<<< HEAD
     // color: "white",
+=======
+<<<<<<< HEAD
+    color: "white",
+=======
+    // color: "white",
+>>>>>>> 1e9389b (splash page styling)
+>>>>>>> clone
     fs: 1,
   },
 };

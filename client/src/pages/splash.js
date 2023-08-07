@@ -28,7 +28,11 @@ const Splash = () => {
         tertiary={s.tertiary}
         interval={200}
       />
+<<<<<<< HEAD
       {/* <h1 className={s.splashHeader}>GRAPHIC BALANCE</h1> */}
+=======
+      <h1 className={s.splashHeader}>GRAPHIC BALANCE</h1>
+>>>>>>> clone
       {/* <div className="circle"></div> */}
       <form onSubmit={handleSubmit}>
         <input className={s.navButton} type="submit" value="enter" />

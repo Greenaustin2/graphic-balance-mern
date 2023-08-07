@@ -45,14 +45,20 @@ const Archive = () => {
       <div className={s.navbar}>
         <div className={s.navbarHeader}>Archive List</div>
         <div className={s.navbarDropdown}>
+<<<<<<< HEAD
           {/* <button onClick={() => loadVideoArchive()}>default sort</button> */}
           {videoData && (
+=======
+          <div className={s.left}>
+            <button onClick={() => loadVideoArchive()}>default sort</button>
+>>>>>>> clone
             <TableWrapper
               videoData={videoData}
               handleTableClick={handleTableClick}
               currentVideo={currentVideo}
               loadVideoArchive={loadVideoArchive}
             />
+<<<<<<< HEAD
           )}
         </div>
       </div>
@@ -70,6 +76,25 @@ const Archive = () => {
           <VidInfo currentVideo={currentVideo} videoData={videoData} />
         )}
         <DatabaseSubmit />
+=======
+          </div>
+        </div>
+        <div className={s.right}>
+          {currentVideo && (
+            <IframeConstructor currentVideo={currentVideo} onEnd={nextVideo} />
+          )}
+          <IframeControls
+            previousVideo={previousVideo}
+            nextVideo={nextVideo}
+            handleDelete={handleDelete}
+            submitToArchive={null}
+          />
+          {videoData && currentVideo && (
+            <VidInfo currentVideo={currentVideo} videoData={videoData} />
+          )}
+          <DatabaseSubmit />
+        </div>
+>>>>>>> clone
       </div>
 
       {showModal && <AboutModal handleClose={handleClose} />}

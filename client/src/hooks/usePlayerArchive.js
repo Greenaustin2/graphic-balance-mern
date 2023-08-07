@@ -51,8 +51,25 @@ function usePlayerArchive() {
   }
 
   const handleDelete = () => {
+<<<<<<< HEAD
     instance
       .delete("/archive-data/" + currentVideo)
+=======
+    axios
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      .delete("http://localhost:5000/archive/" + currentVideo)
+=======
+      .delete("http://localhost:5000/archive" + currentVideo)
+>>>>>>> f782cb4 (cors options added)
+=======
+      .delete("/archive" + currentVideo)
+>>>>>>> a97ec40 (removed hardcoded post url)
+=======
+      .delete("http://localhost:5000/archive" + currentVideo)
+>>>>>>> fef8867 (hardcoded localhost url axios)
+>>>>>>> clone
       .then(() => {
         console.log("video deleted");
       })
