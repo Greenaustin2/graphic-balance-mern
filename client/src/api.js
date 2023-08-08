@@ -22,19 +22,11 @@ const apiRequest = async (part, value) => {
   let url;
   //If statement that differentiates between a Content Details and Snippet API requests
   if (part === "contentDetails") {
-<<<<<<< HEAD
-    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[3]}`;
-  } else if (part === "snippet") {
-    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[3]}&type=video&videoEmbeddable=true&maxResults=10&videoDefinition=high&q=${value}`;
-  } else if (part === "singleSnippet") {
-    url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${YOUTUBE_API_KEY[3]}&id=${value}`;
-=======
     url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[2]}`;
   } else if (part === "snippet") {
     url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[2]}&type=video&videoEmbeddable=true&maxResults=10&videoDefinition=high&q=${value}`;
   } else if (part === "singleSnippet") {
     url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${YOUTUBE_API_KEY[2]}&id=${value}`;
->>>>>>> clone
   }
   const response = await fetch(url);
   const data = await response.json();
