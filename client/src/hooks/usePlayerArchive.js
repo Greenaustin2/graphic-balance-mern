@@ -1,8 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import instance from "../axiosConfig";
-// instance.defaults.baseURL =
-//   "graphic-balance-mern-2hdbgpvv4-greenaustin2.vercel.app";
-// axios.defaults.baseURL = "http://localhost:5000";
 
 function usePlayerArchive() {
   const [videoData, setVideoData] = useState([]);
