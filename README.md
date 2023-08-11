@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# GRAPHIC BALANCE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[graphic-balance.com](https://graphic-balance-3bf05d57cb18.herokuapp.com/)
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+<p align="center">
 
-### `npm start`
+:construction: :construction: :construction: STILL IN DEVELOPEMENT :construction: :construction: :construction:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+:construction: not optimized for mobile :construction:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+</p>
 
-### `npm test`
+Graphic Balance is a streaming platform intended to provide alternative interaction with the depths of the YouTube database. Using common in-camera file naming protocol (IMG 0000), the program generates search query values and auto plays a query result at random, presenting to each user a unique and constant stream of content. The resulting content is somewhat voyeuristic in nature; family vacations, birthday parties, sporting events, karaoke nights, most of which was never intended to be viewed by the masses. As videos are played, the user is encouraged to submit any interesting artifacts to the archive where they will be stored and indexed. Users can then navigate to the Archive page and view these files in a "greatest hits" esque fashion.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![screen shot one](../assets/screen_shot_one.png?raw=true)
 
-### `npm run build`
+![screen shot two](../assets/screen_shot_two.png?raw=true)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![screen shot three](../assets/screen_shot_three.png?raw=true)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Frontend** - ![react logo](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![react router logo](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-### `npm run eject`
+**Backend** - ![node.js logo](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![express logo](https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white) ![mongodb logo](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![youtube logo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Styling** - ![css3 logo](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+, CSS Modules
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Testing** - ![postman logo](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Deployment** - [![heroku logo](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+](https://vercel.com/greenaustin2/graphic-balance-mern)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Process
 
-## Learn More
+Graphic Balance utilizes the MERN stack, which was an ideal set of frameworks for this concept. When initialized, the program generates a search query consiting of a string ("IMG") and a four digit number between 0000 and 9999 (eg. IMG 2157). IMG is a standard in camera file type, similar to MOV, AVI, DVI, MP4 etc. This query is then used to search Youtube via the Youtube Data API, and when a response is received, a video is chosed from that response at random and presented to the user.
+This was a challenging project, and one that I started far too early in my developement career. However, the challenges it presented exposed me to a wide array of concepts, frameworks, and concepts that I may not have grasped had I followed common MERN stack tutorial projects.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Key concepts learned:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### -State Management
 
-### Code Splitting
+Multiple React state management techniques (context, localized, custom hooks) were implemented before arriving at the end product. This conditioned me heavily with the React Lifecycle and how React behaves under the hood
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### -API
 
-### Analyzing the Bundle Size
+For the program to function as I intended, multiple API calls were required due to the Youtube API's seperation of information into seperate API endpoints. The respective API call's response data was then filtered as per certain criteria, and then concatenated into one final object that is then used to communicate to the Youtube Iframe API, as well as send formatted data to the database. This gave me a healthy amount of practice with JSON, async await, and general API fetch, response protocol.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### -Database
 
-### Making a Progressive Web App
+All basic CRUD operations are utilized throughout this project. Once I was familiar with the structure of the Youtube API responses, the main task was destructuring those objects, extracting the necessary information, and assigning said infoirmation to the respective fields in the database Schema.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Future Functionality
 
-### Advanced Configuration
+### -User Authentification
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Save and archive videos to a personal account
 
-### Deployment
+Secondary database for video submission staging
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+When a video is submitted to the archive by a user, it will be sent to a staging database. Once approved by an admin, it will be transferred to the permanent public database
 
-### `npm run build` fails to minify
+### -Styling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+While all core functionality is enabled, the interface is clunky and buggy
+
+Optimize for mobile (currently only desktop and large device viewing recommended)
+
+### -Youtube Data API Quota
+
+Awaiting Google Audited Developer Requests Form to be approved for unlimited API quota
