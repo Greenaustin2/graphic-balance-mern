@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV;
 const instance = axios.create({
   baseURL:
     env === "production"
-      ? "https://graphic-balance-3bf05d57cb18.herokuapp.com/" // production
+      ? "https://graphic-balance-test-46e35e237003.herokuapp.com/" // production
       : "http://localhost:5000/", // development
 });
 
