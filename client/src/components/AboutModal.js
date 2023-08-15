@@ -1,10 +1,11 @@
 import Modal from "./Modal";
 
 const AboutModal = ({ handleClose }) => {
+  //actionBar item used to close the modal or initiate some other action
   const actionBar = <button onClick={handleClose}>&lt;close&gt;</button>;
-
   return (
     <Modal handleClose={handleClose} actionBar={actionBar}>
+      {/* Modal child to be displayed as the contents within the modal */}
       <p>
         Graphic Balance is a streaming platform intended to provide alternative
         interaction with the depths of the YouTube database. Using common

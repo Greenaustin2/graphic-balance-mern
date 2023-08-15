@@ -11,7 +11,6 @@
 :construction: not yet optimized for mobile :construction:
 
 </p>
-
 Graphic Balance is a streaming platform intended to provide alternative interaction with the depths of the YouTube database. Using common in-camera file naming protocol (IMG 0000), the program generates search query values and auto plays a query result at random, presenting to each user a unique and constant stream of content. The resulting content is somewhat voyeuristic in nature; family vacations, birthday parties, sporting events, karaoke nights, most of which was never intended to be viewed by the masses. As videos are played, the user is encouraged to submit any interesting artifacts to the archive where they will be stored and indexed. Users can then navigate to the Archive page and view these files in a "greatest hits" esque fashion.
 
 ![screen shot one](../assets/screen_shot_one.png?raw=true)
