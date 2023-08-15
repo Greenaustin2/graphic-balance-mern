@@ -20,13 +20,10 @@ const Main = () => {
       <h1 className={s.mainHeader}>GRAPHIC BALANCE</h1>
       <div className={s.navWrapper}>
         <button className={s.nav} onClick={() => navigate("/archive")}>
-          archive
-        </button>
-        <button className={s.nav} onClick={() => navigate("/")}>
-          splash
+          &lt;archive&gt;
         </button>
         <button className={s.nav} onClick={handleClick}>
-          about
+          &lt;about&gt;
         </button>
       </div>
       {currentVideo && (
@@ -36,11 +33,9 @@ const Main = () => {
         />
       )}
 
-      <IframeControls
-        previousVideo={previousVideo}
-        nextVideo={nextVideo}
-        submitToArchive={submitToArchive}
-      />
+      <IframeControls previousVideo={previousVideo} nextVideo={nextVideo} />
+      <br />
+      <IframeControls submitToArchive={submitToArchive} />
       {showModal && <AboutModal handleClose={handleClose} />}
     </div>
   );

@@ -8,7 +8,7 @@
 
 :construction: :construction: :construction: STILL IN DEVELOPEMENT :construction: :construction: :construction:
 
-:construction: not optimized for mobile :construction:
+:construction: not yet optimized for mobile :construction:
 
 </p>
 

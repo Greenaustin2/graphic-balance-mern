@@ -25,8 +25,11 @@ a:visited {
 
 a:hover {
   text-decoration: none;
+  transition: 0.25s ease;
+  text-shadow: 0px 0px 10px #000000b9;
 }
 
 a:active {
   text-decoration: none;
+  color: rgba(255, 183, 0, 0.683);
 }

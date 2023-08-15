@@ -14,7 +14,7 @@ const VidInfo = ({ currentVideo, videoData }) => {
   return (
     <div className={s.infoContainer}>
       <ExternalLink
-        href={"https://www.youtube.com/watch?v=" + selectedVideo["id"]}
+        href={"https://www.youtube.com/watch?v=" + selectedVideo["_id"]}
       >
         <span className={s.link}>{selectedVideo["videoTitle"]}</span>
       </ExternalLink>

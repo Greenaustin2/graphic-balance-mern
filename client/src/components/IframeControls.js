@@ -18,22 +18,26 @@ const IframeControls = ({
           submit to archive
         </button>
       )}
-      <button
-        className={s.control}
-        type="button"
-        onClick={previousVideo}
-        value="Previous"
-      >
-        previous
-      </button>
-      <button
-        className={s.control}
-        type="button"
-        onClick={nextVideo}
-        value="Next"
-      >
-        next
-      </button>
+      {previousVideo && (
+        <button
+          className={s.control}
+          type="button"
+          onClick={previousVideo}
+          value="Previous"
+        >
+          &lt;--
+        </button>
+      )}
+      {nextVideo && (
+        <button
+          className={s.control}
+          type="button"
+          onClick={nextVideo}
+          value="Next"
+        >
+          --&gt;
+        </button>
+      )}
       {handleDelete && (
         <button
           className={s.control}
