@@ -1,8 +1,20 @@
 import Modal from "./Modal";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import s from "../css/aboutModal.module.css";
 
 const AboutModal = ({ handleClose }) => {
+  const navigate = useNavigate();
+
   //actionBar item used to close the modal or initiate some other action
-  const actionBar = <button onClick={handleClose}>&lt;close&gt;</button>;
+  const actionBar = (
+    <div className={s.privacyPolicy}>
+      <button onClick={() => navigate("/privacy-policy")}>
+        Privacy Policy
+      </button>
+      <button onClick={handleClose}>&lt;close&gt;</button>
+    </div>
+  );
   return (
     <Modal handleClose={handleClose} actionBar={actionBar}>
       {/* Modal child to be displayed as the contents within the modal */}

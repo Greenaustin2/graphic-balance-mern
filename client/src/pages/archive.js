@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import useModal from "../hooks/useModal";
 import usePlayerArchive from "../hooks/usePlayerArchive";
 import useKeyDown from "../hooks/useKeyDown";
@@ -81,7 +81,7 @@ const Archive = () => {
         {videoData && currentVideo && (
           <VidInfo currentVideo={currentVideo} videoData={videoData} />
         )}
-        {/* <DatabaseSubmit /> */}
+        <DatabaseSubmit />
       </div>
 
       {showModal && <AboutModal handleClose={handleClose} />}

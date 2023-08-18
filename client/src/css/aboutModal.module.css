@@ -47,3 +47,8 @@ button:hover {
   display: flex;
   justify-content: flex-end;
 }
+
+.privacyPolicy {
+  display: flex;
+  justify-content: space-between;
+}
