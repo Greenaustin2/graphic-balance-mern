@@ -25,7 +25,6 @@ const Archive = () => {
   const { handleClick, handleClose, showModal } = useModal();
   const navigate = useNavigate();
   const [glow, setGlow] = useState(true);
-  const isInitialLoad = useRef(true);
 
   useKeyDown("ArrowRight", nextVideo, currentVideo);
   useKeyDown("ArrowLeft", previousVideo, currentVideo);

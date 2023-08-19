@@ -19,7 +19,10 @@ connection.once("open", () => {
 });
 
 const archiveRouter = require("./routes/archive");
+const tempArchiveRouter = require("./routes/tempArchive");
+
 app.use("/archive-data", archiveRouter);
+app.use("/temp-archive", tempArchiveRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
