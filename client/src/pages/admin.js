@@ -15,6 +15,7 @@ const Admin = () => {
   const [input, setInput] = useState("");
   const [page, setPage] = useState(false);
 
+  //input password validation
   const handleSubmit = (event) => {
     event.preventDefault();
     if (event.target.value === process.env.REACT_APP_ADMIN_PASS) {
@@ -87,7 +88,7 @@ const Admin = () => {
                 previousVideo={previousVideo}
                 nextVideo={nextVideo}
                 handleDelete={handleDelete}
-                submitToArchive={transferToPermanentArchive}
+                transferToPermanentArchive={transferToPermanentArchive}
               />
               {videoData && currentVideo && (
                 <VidInfo currentVideo={currentVideo} videoData={videoData} />

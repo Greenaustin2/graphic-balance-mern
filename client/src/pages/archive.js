@@ -74,7 +74,7 @@ const Archive = () => {
         <IframeControls
           previousVideo={previousVideo}
           nextVideo={nextVideo}
-          // handleDelete={handleDelete}
+          handleDelete={handleDelete}
           // submitToArchive={null}
         />
         {videoData && currentVideo && (

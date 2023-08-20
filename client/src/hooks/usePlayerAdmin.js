@@ -38,9 +38,10 @@ function usePlayerAdmin() {
         },
       })
       .then((response) => {
-        console.log("load video archive response");
-        console.log("response data" + response.data);
-        setVideoData(response.data);
+        if (response.data.length === 0) {
+        } else {
+          setVideoData(response.data);
+        }
       })
       .catch((error) => {
         alert(error);
@@ -51,7 +52,8 @@ function usePlayerAdmin() {
     instance
       .delete("/temp-archive/" + currentVideo)
       .then(() => {
-        console.log("video deleted");
+        alert("video deleted");
+        window.location.reload();
       })
       .catch((error) => {
         alert(error);
@@ -60,17 +62,18 @@ function usePlayerAdmin() {
 
   //deletes video from temporary archive and adds to permanent archive
   const transferToPermanentArchive = () => {
+    console.log(videoData[0]["_id"]);
     const videoFile = {
-      _id: currentVideo["id"],
-      videoTitle: currentVideo["snippet"]["title"],
-      channelId: currentVideo["snippet"]["channelId"],
-      channelTitle: currentVideo["snippet"]["channelTitle"],
-      description: currentVideo["snippet"]["description"],
-      publisheTime: currentVideo["snippet"]["publishTime"],
-      dateAdded: Date(),
-      duration: currentVideo["contentDetails"]["duration"],
-      thumbnailHigh: currentVideo["snippet"]["thumbnails"]["high"]["url"],
-      userRating: 0,
+      _id: videoData[0]["_id"],
+      videoTitle: videoData[0]["videoTitle"],
+      channelId: videoData[0]["channelId"],
+      channelTitle: videoData[0]["channelTitle"],
+      description: videoData[0]["description"],
+      publisheTime: videoData[0]["publisheTime"],
+      dateAdded: videoData[0]["dateAdded"],
+      duration: videoData[0]["duration"],
+      thumbnailHigh: videoData[0]["thumbnailHigh"],
+      userRating: videoData[0]["userRating"],
     };
     instance
       .post("/archive-data/add/", videoFile)

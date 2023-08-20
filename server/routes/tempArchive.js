@@ -1,6 +1,5 @@
 const router = require("express").Router();
-let tewmp;
-TempArchive = require("../models/temp-archive.model");
+let TempArchive = require("../models/tempArchive.model");
 
 router.route("/table").get((req, res) => {
   console.log("express router get request");
@@ -24,7 +23,7 @@ router.route("/add").post((req, res) => {
   const thumbnailHigh = req.body.thumbnailHigh;
   const userRating = req.body.userRating;
 
-  const newArchive = new Archive({
+  const newArchive = new TempArchive({
     _id,
     videoTitle,
     channelId,

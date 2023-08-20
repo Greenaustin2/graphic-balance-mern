@@ -5,6 +5,7 @@ const IframeControls = ({
   nextVideo,
   submitToArchive,
   handleDelete,
+  transferToPermanentArchive,
 }) => {
   return (
     <div className={s.iframeControls}>
@@ -46,6 +47,16 @@ const IframeControls = ({
           value="Delete"
         >
           delete
+        </button>
+      )}
+      {transferToPermanentArchive && (
+        <button
+          className={s.control}
+          type="button"
+          onClick={transferToPermanentArchive}
+          value="Transfer"
+        >
+          Xfer
         </button>
       )}
     </div>
