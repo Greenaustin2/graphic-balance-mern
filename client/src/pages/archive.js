@@ -74,13 +74,13 @@ const Archive = () => {
         <IframeControls
           previousVideo={previousVideo}
           nextVideo={nextVideo}
-          handleDelete={handleDelete}
+          // handleDelete={handleDelete}
           // submitToArchive={null}
         />
         {videoData && currentVideo && (
           <VidInfo currentVideo={currentVideo} videoData={videoData} />
         )}
-        <DatabaseSubmit />
+        {/* <DatabaseSubmit /> */}
       </div>
 
       {showModal && <AboutModal handleClose={handleClose} />}

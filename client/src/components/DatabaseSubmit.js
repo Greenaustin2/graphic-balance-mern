@@ -41,6 +41,9 @@ const DatabaseSubmit = () => {
     instance
       .post("archive-data/add/", videoFile)
       .then(function (response) {
+        alert("added to database");
+        window.location.reload();
+
         console.log(response);
       })
       .catch(function (error) {

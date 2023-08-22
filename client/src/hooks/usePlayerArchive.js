@@ -51,7 +51,7 @@ function usePlayerArchive() {
     instance
       .delete("/archive-data/" + currentVideo)
       .then(() => {
-        console.log("video deleted");
+        alert("video deleted");
       })
       .catch((error) => {
         alert(error);
