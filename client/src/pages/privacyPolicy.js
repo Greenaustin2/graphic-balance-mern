@@ -101,7 +101,7 @@ const privacyPolicy = () => {
             <strong>Website</strong> refers to Graphic Balance, accessible from
             <a
               href="https://graphic-balance-test-46e35e237003.herokuapp.com/main"
-              rel="external nofollow noopener"
+              rel="external nofollow noopener noreferrer"
               target="_blank"
             >
               https://graphic-balance-test-46e35e237003.herokuapp.com/main
@@ -184,6 +184,7 @@ const privacyPolicy = () => {
         <a
           href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies"
           target="_blank"
+          rel="noreferrer"
         >
           TermsFeed website
         </a>
@@ -475,7 +476,7 @@ const privacyPolicy = () => {
         Services and the{" "}
         <a
           href="https://developers.google.com/youtube/v3"
-          rel="external nofollow noopener"
+          rel="external nofollow noopener noreferrer"
           target="_blank"
         >
           Youtube Data API
@@ -483,7 +484,7 @@ const privacyPolicy = () => {
         , you are aggreeing to be bound by the{" "}
         <a
           href="https://www.youtube.com/t/terms"
-          rel="external nofollow noopener"
+          rel="external nofollow noopener noreferrer"
           target="_blank"
         >
           Youtube Terms of Service
@@ -491,7 +492,7 @@ const privacyPolicy = () => {
         . See also the&nbsp;
         <a
           href="https://policies.google.com/privacy?hl=en-US"
-          rel="external nofollow noopener"
+          rel="external nofollow noopener noreferrer"
           target="_blank"
         >
           Google Privacy Policy
