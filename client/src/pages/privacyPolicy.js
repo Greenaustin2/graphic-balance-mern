@@ -469,6 +469,35 @@ const privacyPolicy = () => {
         We have no control over and assume no responsibility for the content,
         privacy policies or practices of any third party sites or services.
       </p>
+      <h1>Youtube Terms of Service</h1>
+      <p>
+        By using this application, which utilizes and implements Youtube API
+        Services and the{" "}
+        <a
+          href="https://developers.google.com/youtube/v3"
+          rel="external nofollow noopener"
+          target="_blank"
+        >
+          Youtube Data API
+        </a>
+        , you are aggreeing to be bound by the{" "}
+        <a
+          href="https://www.youtube.com/t/terms"
+          rel="external nofollow noopener"
+          target="_blank"
+        >
+          Youtube Terms of Service
+        </a>
+        . See also the&nbsp;
+        <a
+          href="https://policies.google.com/privacy?hl=en-US"
+          rel="external nofollow noopener"
+          target="_blank"
+        >
+          Google Privacy Policy
+        </a>
+        .
+      </p>
       <h1>Changes to this Privacy Policy</h1>
       <p>
         We may update Our Privacy Policy from time to time. We will notify You

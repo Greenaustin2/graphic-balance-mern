@@ -6,27 +6,17 @@ import {
   randomVideo,
 } from "./utils/queryProcessing";
 
-//List of API keys
-const YOUTUBE_API_KEY = [
-  "AIzaSyBesfjYTtAk5vOqCA549-3zr4d4GlCbMvA",
-  "AIzaSyBLwGPRTTLqwPu36ArhTCe9wfaASMaFP7g",
-  "AIzaSyBbjPfpogUhfCptQKixNdKI445O_XFP3hs",
-  "AIzaSyBMOq2KUZg7xFc29bGF9VKQgRHYMEX7tpQ",
-  "AIzaSyBBFpmVkJLy-5iy-4nMGjlzEZWoAfziuuU",
-  "AIzaSyDBxVN6Jb3pYqPfsOM9NdgzItzivNX27QI",
-];
+const apiKey = "AIzaSyBbjPfpogUhfCptQKixNdKI445O_XFP3hs";
 
 const apiRequest = async (part, value) => {
-  console.log("api request called");
-  console.log(value, part);
   let url;
   //If statement that differentiates between a Content Details and Snippet API requests
   if (part === "contentDetails") {
-    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${YOUTUBE_API_KEY[2]}`;
+    url = `https://www.googleapis.com/youtube/v3/videos?id=${value}&part=contentDetails&key=${apiKey}`;
   } else if (part === "snippet") {
-    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${YOUTUBE_API_KEY[2]}&type=video&videoEmbeddable=true&maxResults=10&videoDefinition=high&q=${value}`;
+    url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${apiKey}&type=video&videoEmbeddable=true&maxResults=10&videoDefinition=high&q=${value}`;
   } else if (part === "singleSnippet") {
-    url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${YOUTUBE_API_KEY[2]}&id=${value}`;
+    url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&key=${apiKey}&id=${value}`;
   }
   const response = await fetch(url);
   const data = await response.json();
@@ -65,5 +55,5 @@ const YoutubeApi = async () => {
   }
 };
 
-export { YOUTUBE_API_KEY, apiRequest };
+export { apiRequest };
 export default YoutubeApi;
